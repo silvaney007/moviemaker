@@ -1,10 +1,10 @@
 #main-header{
 width: 100%;
 height: 60px;
-background-color: darkblue;
+background: blue;
 font-size: 20px;
 font-weight: bold;
-color: blanchedalmond;
+color: white;
 display: flex;
 justify-content: center;
 align-items: center ;

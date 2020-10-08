@@ -1,0 +1,49 @@
+.movie-list {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+}
+
+.movie-list article {
+    background: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.movie-list article p {
+    font-size: 16px;
+    color: #4f4f4f;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.movie-list .pages {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.movie-list .pages button{
+     padding: 10px;
+     border-radius: 5px;
+     border: 0;
+     background: blue;
+     color: white;
+     font-size: 16px;
+     font-weight: bold;
+    cursor: pointer;
+  }
+  .movie-list .pages button:hover{
+   opacity: 0.7;
+ }
+
+ .movie-list .pages button[disabled]{
+  opacity: 0.5;
+  cursor: default;
+}
+
+.movie-list .pages button[disabled]:hover{
+  opacity: 0.5;
+}
