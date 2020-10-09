@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-unused-vars */
 import React, {Component} from 'react';
-import api from '../../service/Api';
+import {api} from '../../service/Api';
 import './Styles.css'
 
 
@@ -10,7 +11,7 @@ export default class Page extends Component {
     state = {
         movies:[],
         infos:{},
-        page:1
+        page:1,
     }
 
     componentDidMount(){
@@ -21,11 +22,10 @@ export default class Page extends Component {
     const response = await api(page).get();
     const {results, ...infos} = response.data;
     this.setState({movies:results, infos, page})
-    console.log(results);
 }
 
     prevPage = () => {
-        const {page , infos} = this.state;
+        const {page} = this.state;
 
         if(page === 1) return;
 
@@ -53,19 +53,23 @@ export default class Page extends Component {
 
         const {movies, page, infos} = this.state;
 
-    return <div className='movie-list'>
-        {movies.map(movie => (
-            <article key={movie.id}>
-            <h3><strong>Title:</strong> {movie.original_title}</h3>
-            <p><strong>Description:</strong> {movie.overview}</p>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img'></img>
-            </article>
-        ))}
+    return<section>
+    <div className='movie-list'>
+        {movies.map(movie => ( 
 
-        <div className='pages'>
+            <article key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img'></img>
+            <h3>{movie.title}</h3>
+            </article>
+    
+        ))}
+    </div>
+
+    <div className='pages'>
             <button disabled={page === 1} onClick={this.prevPage}>Prev</button>
             <button disabled={page === infos.total_pages} onClick={this.nextPage}>Next</button>
         </div>
-    </div>
+    </section>
+    
     }
 }

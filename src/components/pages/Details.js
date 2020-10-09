@@ -1,9 +1,22 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable no-unused-vars */
+import React, { Component } from 'react';
+import Details from '../../service/Api'
+
+export default class detail extends Component {
+
+state = {
+    details:[],
+};
+
+async componentDidMount(){
 
 
-const details = () => (
-            <h1> DSR </h1>
-        
-);
+}
 
-export default details;
+render(){
+return
+
+}
+
+}

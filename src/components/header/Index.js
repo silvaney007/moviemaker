@@ -3,7 +3,7 @@ import './Styles.css'
 
 const header = () => (
         <header id='main-header'>
-            <h1> DSR </h1>
+            <h1> Movie Maker </h1>
         </header>
 );
 
