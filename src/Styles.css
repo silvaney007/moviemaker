@@ -7,6 +7,6 @@ box-sizing: border-box;
 
 body{
 font-family: Verdana, Geneva, Tahoma, sans-serif;
-background: azure;
-color:#333 ;
+background-image: url('./assets/img/daniel-von-appen-AZK6C3jKZEQ-unsplash.jpg');
+columns: #333333; ;
 }

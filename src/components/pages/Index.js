@@ -6,7 +6,6 @@ import './Styles.css'
 
 export default class Page extends Component {
 
-    baseUrl = 'https://image.tmdb.org/t/p/w500/kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg';
 
     state = {
         movies:[],
@@ -59,7 +58,7 @@ export default class Page extends Component {
             <article key={movie.id}>
             <h3><strong>Title:</strong> {movie.original_title}</h3>
             <p><strong>Description:</strong> {movie.overview}</p>
-            <img src ={this.baseUrl} alt='img'></img>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img'></img>
             </article>
         ))}
 
