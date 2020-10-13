@@ -1,7 +1,6 @@
 ### Image Preview
 
-![moviemaker](https://user-images.githubusercontent.com/42571500/95895252-4a656280-0d82-11eb-9a44-58c0fbb190bd.png)
-
+![moviemaker](https://user-images.githubusercontent.com/42571500/95895825-2fdfb900-0d83-11eb-87ee-54422502fd02.png)
 
 ### The Project
 
