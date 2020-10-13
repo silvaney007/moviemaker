@@ -1,10 +1,22 @@
 .detail{
-  background: whitesmoke;
-  border: 1px solid white;
-  border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 5rem;
+}
+
+.detail img {
+  max-width: 350px;
+  height: auto;
+  border-radius: 20px;
+  margin-left: 30px;
+}
+
+
+.detail iframe {
+  width: 70%;
+  height: 60%;
+  border-radius: 20px ;
+  margin-top: 80px;
 }

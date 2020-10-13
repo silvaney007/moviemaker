@@ -1,7 +1,7 @@
 
 .movie-list {
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
@@ -11,17 +11,24 @@
   background: whitesmoke;
   border: 1px solid white;
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin: 15px;
 }
 
 .movie-list article:hover { 
-background-color: #F7FE2E}
+background-color: #F7FE2E
+}
 
+.movie-list article img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
 
-.movie-list article p {
+.movie-list article h3 {
   margin-top: 5px;
   margin-right: auto;
-  text-align: center
+  text-align: center;
+  max-block-size: 50px;
 }
 
 .pages {
@@ -54,8 +61,3 @@ background-color: #F7FE2E}
   opacity: 0.5;
 }
 
-.movie-list article img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-}
