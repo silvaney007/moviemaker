@@ -1,0 +1,10 @@
+.detail{
+  background: whitesmoke;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-unused-vars */
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import {api} from '../../service/Api';
 import './Styles.css'
 
@@ -24,6 +25,8 @@ export default class Page extends Component {
     this.setState({movies:results, infos, page})
 }
 
+
+
     prevPage = () => {
         const {page} = this.state;
 
@@ -42,13 +45,10 @@ export default class Page extends Component {
 
         const pageNumber = page+1;
 
-        console.log(pageNumber);
-
         this.loadMovies(pageNumber)
     };
 
-
-
+  
     render(){
 
         const {movies, page, infos} = this.state;
@@ -56,12 +56,12 @@ export default class Page extends Component {
     return<section>
     <div className='movie-list'>
         {movies.map(movie => ( 
-
             <article key={movie.id}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img'></img>
-            <h3>{movie.title}</h3>
+            <Link to = {`/movie/${movie.id}`}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
+            <p>{movie.title}</p>
+            </Link>
             </article>
-    
         ))}
     </div>
 

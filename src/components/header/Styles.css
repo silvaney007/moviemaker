@@ -11,3 +11,9 @@ align-items: center ;
 border: 2px;
 border: red;
 }
+
+#main-header h1 {
+margin-top: 3px;
+font: bold;
+font-family: Georgia, 'Times New Roman', Times, serif;   
+}
