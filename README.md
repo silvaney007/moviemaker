@@ -1,3 +1,9 @@
+### Image Preview
+
+![moviemaker](https://user-images.githubusercontent.com/42571500/95895825-2fdfb900-0d83-11eb-87ee-54422502fd02.png)
+
+### The Project
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
