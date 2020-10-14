@@ -1,6 +1,9 @@
+##OBS: Working on (incomplete) 
+
 ### Image Preview
 
-![moviemaker](https://user-images.githubusercontent.com/42571500/95895825-2fdfb900-0d83-11eb-87ee-54422502fd02.png)
+![moviemaker](https://user-images.githubusercontent.com/42571500/95995462-6a9c2c80-0e29-11eb-964c-2640d973e147.png)
+![moviemakerdetail](https://user-images.githubusercontent.com/42571500/95995457-696aff80-0e29-11eb-80da-fcc48f8e8344.png)
 
 ### The Project
 
