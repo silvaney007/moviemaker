@@ -24,11 +24,11 @@ background-color: #F7FE2E
   border-radius: 20px;
 }
 
-.movie-list article h3 {
-  margin-top: 5px;
+.movie-list article h5 {
+  margin-top: 3px;
+  margin-bottom: 3px;
   margin-right: auto;
   text-align: center;
-  max-block-size: 50px;
 }
 
 .pages {

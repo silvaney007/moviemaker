@@ -59,7 +59,7 @@ export default class Page extends Component {
             <article key={movie.id}>
             <Link to = {`/movie/${movie.id}`}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
-            <h3>{movie.title}</h3>
+            <h5>{movie.title}</h5>
             </Link>
             </article>
         ))}
