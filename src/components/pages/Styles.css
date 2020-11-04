@@ -61,3 +61,20 @@ background-color: #F7FE2E
   opacity: 0.5;
 }
 
+#main-header{
+  width: 100vw;
+  height: 80px;
+  background:brown;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  border: red;
+  }
+  
+  #main-header h1 {
+  font: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;   
+  }

@@ -54,6 +54,13 @@ export default class Page extends Component {
         const {movies, page, infos} = this.state;
 
     return<section>
+        <header id='main-header'>
+            <button type="button">
+                <Link to="/" className="enter-app">
+                <h1> MovieMaker </h1>
+                </Link>
+            </button>
+        </header>
     <div className='movie-list'>
         {movies.map(movie => ( 
             <article key={movie.id}>
