@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import {api} from '../../service/Api';
+import {api, find} from '../../service/Api';
 import './Styles.css'
 
 
@@ -13,17 +13,20 @@ export default class Page extends Component {
         movies:[],
         infos:{},
         page:1,
+        searchText: '',
+        searchTextTimeout: 0,
     }
 
     componentDidMount(){
-    this.loadMovies();
+    this.loadMovies('');
 }
 
-    loadMovies = async (page = 1) => {
-    const response = await api(page).get();
+    loadMovies = async (query, page = 1) => { 
+    const response = query.length>0? await find(query, page).get() : await api(page).get();
     const {results, ...infos} = response.data;
     this.setState({movies:results, infos, page})
 }
+
 
 
 
@@ -48,20 +51,32 @@ export default class Page extends Component {
         this.loadMovies(pageNumber)
     };
 
+    handleNewText = (event) => {
+        const searchText = event.target.value;
+        clearTimeout(this.state.searchTextTimeout);
+    
+        this.setState({
+          searchText,
+          searchTextTimeout: setTimeout(
+            () => this.loadMovies(searchText),
+            500
+          ),
+        });
+      };
+
    
   
     render(){
 
-        const {movies, page, infos} = this.state;
+        const {movies, infos, page} = this.state;
 
-    return <section>
-        <header id='main-header'>
-            <button type="button">
-                <Link to="/" className="enter-app">
-                <h1> MovieMaker </h1>
-                </Link>
-            </button>
-        </header>
+    return (<section>
+    <div className ='search'>
+        <form>
+        <input type='text' placeholder='search' onChange={this.handleNewText}/>
+        </form>
+    </div>
+    
     <div className='movie-list'>
         {movies.map(movie => ( 
             <article key={movie.id}>
@@ -77,7 +92,6 @@ export default class Page extends Component {
             <button disabled={page === 1} onClick={this.prevPage}>Prev</button>
             <button disabled={page === infos.total_pages} onClick={this.nextPage}>Next</button>
         </div>
-    </section>
-    
-    }
+        </section>
+    )}
 }

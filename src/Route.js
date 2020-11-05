@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import {BrowserRouter,Switch ,Route, withRouter} from 'react-router-dom';
-import Details from './components/pages/details/Index';
-import Page from './components/pages/Index';
+import Details from './components/pages/details/Details';
+import Page from './components/pages/Home';
 
 
 
@@ -14,7 +14,6 @@ const routes = () => (
 <Route path='/movie/:id' component= {Details}/>
 </Switch>
 </BrowserRouter>
-
 );
 
 export default routes;

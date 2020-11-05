@@ -17,14 +17,17 @@ export default class Details extends Component {
 
 
 async componentDidMount(){
-
-    const {id} = this.props.match.params;
- 
-        const response1 = await detail(id).get();
-        const response2 = await trailer(id).get();
-        this.setState({movie:response1.data, trailer: response2.data.results[0].key})
+this.details();
 }
 
+ details = async() => {
+     
+    const {id} = this.props.match.params;
+    const response1 = await detail(id).get();
+    const response2 = await trailer(id).get();
+    this.setState({movie:response1.data, trailer: response2.data.results[0].key})
+
+ }
 
 
     render() {
@@ -33,16 +36,8 @@ async componentDidMount(){
 
        
     return (
-    <section>
-         <header id='main-header'>
-            <button type="button">
-                <Link to="/" className="enter-app">
-               <h1> MovieMaker </h1>
-                </Link>
-            </button>
-        </header>
-            <section id='main-detail'>
 
+        <section id='main-detail'>
         <div className='detail'>
         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='img' ></img>
         <div id = 'about'>
@@ -55,7 +50,6 @@ async componentDidMount(){
         <iframe id="ytplayer" type="text/html" width="640" height="360" src={`https://www.youtube.com/embed/${trailer}`}/>
         </aside>
         </div>
-    </section>
     </section>
     )}
 }

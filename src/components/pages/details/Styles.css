@@ -11,7 +11,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5rem;
-
 }
 
 .detail img {
@@ -23,7 +22,7 @@
 
 
 .detail iframe {
-  border-radius: 20px ;
+  border-radius: 20px;
   height: 60vh;
   position: relative;
   top: 20%;
@@ -33,7 +32,7 @@
   height: 40vh;
   position: relative;
   top: 30%;
-  border-radius: 20px ;
+  border-radius: 20px;
   background-color:whitesmoke;
   padding: 20px;
   display: flex;
@@ -47,19 +46,3 @@
  font-weight: bold;
  font-size: 2ch;
 }
-
-#main-header{
-  width: 100vw;
-  height: 80px;
-  background:brown;
-  display: flex;
-  justify-content: center;
-  align-items: center ;
-  }
-  
-  #main-header p {
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: black;
-  font-size: 3ch;   
-  }

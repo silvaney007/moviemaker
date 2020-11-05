@@ -7,6 +7,18 @@
   grid-gap: 1rem;
 }
 
+.search {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search input{
+  width: 30vw;
+  height: 3vh;
+}
+
 .movie-list article {
   background: whitesmoke;
   border: 1px solid white;
@@ -50,7 +62,7 @@ background-color: brown;
   padding: 18px;
   border-radius: 5px;
   border: 0;
-  background: blue;
+  background:brown;
   color: white;
   font-size: 16px;
   font-weight: bold;
