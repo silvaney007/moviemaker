@@ -48,12 +48,13 @@ export default class Page extends Component {
         this.loadMovies(pageNumber)
     };
 
+   
   
     render(){
 
         const {movies, page, infos} = this.state;
 
-    return<section>
+    return <section>
         <header id='main-header'>
             <button type="button">
                 <Link to="/" className="enter-app">
@@ -66,7 +67,7 @@ export default class Page extends Component {
             <article key={movie.id}>
             <Link to = {`/movie/${movie.id}`}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
-            <h5>{movie.title}</h5>
+            <p>{movie.title}</p>
             </Link>
             </article>
         ))}

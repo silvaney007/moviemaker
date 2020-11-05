@@ -1,5 +1,5 @@
 #main-detail{
-  height: 100vh;
+  height: 80vh;
   padding: 20px;
   margin-left: 20px;
   display: flex;
@@ -16,20 +16,23 @@
 
 .detail img {
   border-radius: 20px;
+  height: 80vh;
+  position: relative;
+  top: 10%;
 }
 
 
 .detail iframe {
   border-radius: 20px ;
-  height: 50vh;
+  height: 60vh;
   position: relative;
-  top: 10%;
+  top: 20%;
 }
 
 .detail #about{
-  height: 30vh;
+  height: 40vh;
   position: relative;
-  top: 20%;
+  top: 30%;
   border-radius: 20px ;
   background-color:whitesmoke;
   padding: 20px;
@@ -41,22 +44,22 @@
 .detail #about p strong{
  font-family: 'Times New Roman', Times, serif;
  color:brown;
+ font-weight: bold;
+ font-size: 2ch;
 }
 
 #main-header{
   width: 100vw;
   height: 80px;
   background:brown;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center ;
-  border: red;
   }
   
-  #main-header h1 {
-  font: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;   
+  #main-header p {
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  font-size: 3ch;   
   }

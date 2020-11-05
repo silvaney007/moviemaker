@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-unused-vars */
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import './Styles.css'
+import {Link} from 'react-router-dom';
+import './Styles.css';
 import {detail, trailer} from '../../../service/Api'
 
 
@@ -14,6 +15,7 @@ export default class Details extends Component {
         trailer:'',
     };
 
+
 async componentDidMount(){
 
     const {id} = this.props.match.params;
@@ -23,11 +25,15 @@ async componentDidMount(){
         this.setState({movie:response1.data, trailer: response2.data.results[0].key})
 }
 
+
+
     render() {
 
         const {movie, trailer} = this.state;
+
        
-    return <section>
+    return (
+    <section>
          <header id='main-header'>
             <button type="button">
                 <Link to="/" className="enter-app">
@@ -51,6 +57,6 @@ async componentDidMount(){
         </div>
     </section>
     </section>
-    }
+    )}
 }
 

@@ -14,8 +14,9 @@
   margin: 15px;
 }
 
-.movie-list article:hover { 
-background-color: #F7FE2E
+.movie-list article:hover {
+transform: scale(1.1); 
+background-color: brown;
 }
 
 .movie-list article img {
@@ -24,11 +25,19 @@ background-color: #F7FE2E
   border-radius: 20px;
 }
 
-.movie-list article h5 {
+.movie-list article p {
   margin-top: 3px;
   margin-bottom: 3px;
   margin-right: auto;
   text-align: center;
+  color: black;
+  font-size: 2ch;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.movie-list article:hover p {
+ color: yellow;
 }
 
 .pages {
@@ -65,16 +74,14 @@ background-color: #F7FE2E
   width: 100vw;
   height: 80px;
   background:brown;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center ;
-  border: red;
   }
   
-  #main-header h1 {
-  font: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;   
+  #main-header p {
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  font-size: 3ch;   
   }

@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {BrowserRouter, BrowserHistory, Switch ,Route} from 'react-router-dom';
+import {BrowserRouter,Switch ,Route, withRouter} from 'react-router-dom';
 import Details from './components/pages/details/Index';
 import Page from './components/pages/Index';
+
 
 
 
