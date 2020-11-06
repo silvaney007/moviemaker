@@ -2,11 +2,11 @@
 margin: 0;
 padding: 0;
 outline: 0;
-box-sizing: border-box;
 text-decoration: none;
 }
 
 body{
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-background-image: url('./assets/img/559117.png');
+font-family: 'Courier New', Courier, monospace;
+/*background-image: url('./assets/img/559117.png');*/
+background-color: #566573;
 }

@@ -1,48 +1,115 @@
-#main-detail{
-  height: 80vh;
-  padding: 20px;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.detail{
+.container{
+  position: relative;
+  margin: 5vw;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
 }
 
-.detail img {
-  border-radius: 20px;
-  height: 80vh;
-  position: relative;
-  top: 10%;
-}
-
-
-.detail iframe {
-  border-radius: 20px;
-  height: 60vh;
-  position: relative;
-  top: 20%;
-}
-
-.detail #about{
-  height: 40vh;
-  position: relative;
-  top: 30%;
-  border-radius: 20px;
-  background-color:whitesmoke;
-  padding: 20px;
+.container aside{
+  width: 30vw;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-content: center;
+  border-radius: 20px;
 }
 
-.detail #about p strong{
- font-family: 'Times New Roman', Times, serif;
+.container aside img{
+  width: 100%;
+  height: 80vh;
+  border-radius: 20px;
+}
+
+.container-info{
+  position: relative;
+  border-radius: 20px;
+  width: 56vw;
+  height: 80vh;
+  background-color: antiquewhite;
+
+}
+
+.video{
+  height: 58vh;
+  position: relative;
+  padding-bottom: "56.25%";
+  padding-top:25;
+}
+
+.video iframe {
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container-about{
+  position: absolute;
+  padding: 10px;
+  border-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+ .container-about h1{
+   padding: 1rem;
+  color:brown;
+  font-weight: bold;
+  display:flex;
+  justify-content: center;
+ }
+
+.container-about p strong{
  color:brown;
  font-weight: bold;
- font-size: 2ch;
+}
+
+.container-about p{
+  color:black;
+  font-weight: bold;
+ }
+
+.container-about span{
+ display: flex;
+ justify-content: center;
+ grid-gap: 0.5rem;
+ }
+
+ .rate{
+   padding-left: 2rem;
+ }
+
+ @media only screen and (max-width: 840px) {
+  .container{
+    grid-template-columns: repeat(1, 1fr);
+    width: 80vw;
+  }
+
+  .container-info{
+    width: 80vw;
+  }
+
+  .container aside{
+    width: 80vw;
+  }
+
+  .container aside img{
+    width: 100%;
+    height: 80vh;
+  }
+
+  .video{
+    width: 80vw;
+    height: 40vh;
+  }
+
+  .container-about p strong{
+    font-size: 3vw;
+   }
+   
+   .container-about p{
+    font-size: 2.5vw;
+    }
+ 
 }

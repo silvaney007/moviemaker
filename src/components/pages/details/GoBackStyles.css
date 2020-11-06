@@ -1,0 +1,21 @@
+.home{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 2rem;
+}
+
+.button{
+    width: 50vw;
+    height: 8vh;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+    background-color: antiquewhite;
+}
+
+.home :hover{
+transform: scale(1.1); 
+cursor: pointer;
+}

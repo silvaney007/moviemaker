@@ -21,38 +21,38 @@ export default class Page extends Component {
     this.loadMovies('');
 }
 
-    loadMovies = async (query, page = 1) => { 
-    const response = query.length>0? await find(query, page).get() : await api(page).get();
+    loadMovies = async (searchText, page=1) => { 
+    const response = searchText.length>0? await find(searchText, page).get() : await api(page).get();
     const {results, ...infos} = response.data;
-    this.setState({movies:results, infos, page})
+    this.setState({movies:results, infos, page, searchText})
 }
 
 
 
 
     prevPage = () => {
-        const {page} = this.state;
-
+        const {page, searchText} = this.state;
         if(page === 1) return;
 
         const pageNumber = page-1;
 
-        this.loadMovies(pageNumber)
+        this.loadMovies(searchText, pageNumber)
     };
 
     nextPage = () => {
 
-        const {page , infos} = this.state;
+        const {page , infos, searchText} = this.state;
 
         if(page === infos.total_pages) return;
 
         const pageNumber = page+1;
 
-        this.loadMovies(pageNumber)
+        this.loadMovies(searchText ,pageNumber)
     };
 
     handleNewText = (event) => {
         const searchText = event.target.value;
+        
         clearTimeout(this.state.searchTextTimeout);
     
         this.setState({
@@ -64,8 +64,7 @@ export default class Page extends Component {
         });
       };
 
-   
-  
+
     render(){
 
         const {movies, infos, page} = this.state;
@@ -79,12 +78,12 @@ export default class Page extends Component {
     
     <div className='movie-list'>
         {movies.map(movie => ( 
-            <article key={movie.id}>
+            <ul key={movie.id}>
             <Link to = {`/movie/${movie.id}`}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
             <p>{movie.title}</p>
             </Link>
-            </article>
+            </ul>
         ))}
     </div>
 

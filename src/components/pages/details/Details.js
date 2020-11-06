@@ -1,14 +1,14 @@
-/* eslint-disable no-undef */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable no-unused-vars */
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import './Styles.css';
-import {detail, trailer} from '../../../service/Api'
+import {detail, trailer} from '../../../service/Api';
+import ReactPlayer from 'react-player/youtube'
+import Home from './GoBack'
+
 
 
 export default class Details extends Component { 
+
 
     state ={
         movie:{},
@@ -21,7 +21,6 @@ this.details();
 }
 
  details = async() => {
-     
     const {id} = this.props.match.params;
     const response1 = await detail(id).get();
     const response2 = await trailer(id).get();
@@ -30,25 +29,30 @@ this.details();
  }
 
 
+
     render() {
 
         const {movie, trailer} = this.state;
 
-       
     return (
 
-        <section id='main-detail'>
-        <div className='detail'>
-        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='img' ></img>
-        <div id = 'about'>
-        <p><strong>Title: </strong> {movie.title}<br/><br/>
-        <strong>Overview: </strong> {movie.overview}<br/><br/>
-        <strong> Release Date: </strong> {movie.release_date}<br/><br/>
-        <strong> Classification: </strong> {movie.vote_average}</p>
-        </div>
+        <section>
+            <Home/>
+        <div className='container'>
         <aside>
-        <iframe id="ytplayer" type="text/html" width="640" height="360" src={`https://www.youtube.com/embed/${trailer}`}/>
+        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='img' ></img>
         </aside>
+        <div className='container-info'>
+        <div className="video" >
+        <ReactPlayer url={`https://www.youtube.com/embed/${trailer}`}        />
+        </div>
+        <div className ='container-about'>
+        <h1><strong>{movie.title}</strong></h1><br/>
+        <p><strong> Overview: </strong> {movie.overview}<br/><br/>
+        <span className='date'><strong> Release Date: </strong> {movie.release_date}
+        <span className='rate'><strong> Classification: </strong> {movie.vote_average}</span></span></p>
+        </div>
+        </div>
         </div>
     </section>
     )}
