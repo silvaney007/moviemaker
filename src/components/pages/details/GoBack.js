@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const GoBack = () => {
     let history = useHistory();
-    return (<div className='home'>
+    return (<div className='goBack'>
         <button className="button" onClick={history.goBack}>Movie Maker</button>
     </div>
     )

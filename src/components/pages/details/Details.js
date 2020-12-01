@@ -30,10 +30,11 @@ export default function Details(props) {
 
     return (
         <section>
-            <GoBack />
+            <GoBack/>
             <div className='container'>
-                <aside>
-                    <img src={`https://image.tmdb.org/t/p/w500/${movie.details.poster_path}`} alt='img' ></img>
+                <aside className='container-img'>
+                    <span className='rate'>{movie.details.vote_average}</span>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.details.poster_path}`} alt='img'></img>
                 </aside>
                 <div className='container-info'>
                     <div className="video" >
@@ -43,7 +44,7 @@ export default function Details(props) {
                         <h1><strong>{movie.details.title}</strong></h1><br />
                         <p><strong> Overview: </strong>{movie.details.overview}<br /><br />
                             <span className='date'><strong> Release Date: </strong> {movie.details.release_date}
-                                <span className='rate'><strong> Classification: </strong> {movie.details.vote_average}</span></span></p>
+                            </span></p>
                     </div>
                 </div>
             </div>

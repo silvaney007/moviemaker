@@ -1,4 +1,4 @@
-.home{
+.goBack{
     display: flex;
     justify-content: center;
     align-content: center;
@@ -15,7 +15,7 @@
     background-color: antiquewhite;
 }
 
-.home :hover{
+.goBack :hover{
 transform: scale(1.1); 
 cursor: pointer;
 }

@@ -15,6 +15,7 @@ import "./Styles.css";
 
 export default function Home() {
 
+  const [countPage, setCountPage] = useState(1)
   const [movieList, setMovieList] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState({
@@ -30,33 +31,38 @@ export default function Home() {
 
       const data = response.data.results;
       setMovieList(data);
+      setCountPage(page);
     }
 
     fetchData();
 
-    console.log(movieList)
+  }, [category, search]);
 
-  }, [category]);
+  useEffect(() => {
 
-  function prevPage() {
-    const { page, search } = this.state;
-    if (page === 1) return;
+    if (countPage > 1) {
+      async function loadMovie() {
+        const response = await category.fetch(countPage).get();
+        const newData = response.data.results;
+        setMovieList(oldData => [...oldData, ...newData]);
+      }
+      loadMovie();
+    }
 
-    const pageNumber = page - 1;
-  }
+  }, [countPage]);
 
-  function nextPage() {
-    const { page, infos, search } = this.state;
-
-    if (page === infos.total_pages) return;
-
-    const pageNumber = page + 1;
-  }
 
   function handleSearch(event) {
-    let data = event.target.value;
-    setSearch(data);
+
+    let text = event.target.value;
+
+    const timer = setTimeout(() => {
+      setSearch(text)
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }
+
 
 
   return (
@@ -65,10 +71,11 @@ export default function Home() {
         <button onClick={() => setCategory({ fetch: popular, })}> Popular </button>
         <button onClick={() => setCategory({ fetch: playing, })}> Now Playing </button>
         <button onClick={() => setCategory({ fetch: treding, })}> Trading </button>
-        <form>
-          <input type="text" placeholder="search" onChange={handleSearch} /> </form>
         <button onClick={() => setCategory({ fetch: upcoming, })}> Upcoming </button>
         <button onClick={() => setCategory({ fetch: topRated, })}> Top Rated </button>
+        <form>
+          <input type="text" placeholder="Search a movie..." onChange={handleSearch} />
+        </form>
       </div>
       <div className='movie-list'>
         <ul>
@@ -82,7 +89,9 @@ export default function Home() {
           ))}
         </ul>
       </div>
-      <div className="pages"> </div>
+      <div className="pages">
+        <button onClick={() => setCountPage(prevPage => prevPage + 1)}> Load Movies </button>
+      </div>
     </div>
   )
 }
