@@ -1,96 +1,88 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-unused-vars */
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
-import {api, find} from '../../service/Api';
-import './Styles.css'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  find,
+  treding,
+  playing,
+  popular,
+  topRated,
+  upcoming,
+} from "../../service/Api";
+import "./Styles.css";
 
 
-export default class Page extends Component {
+export default function Home() {
 
+  const [movieList, setMovieList] = useState([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState({
+    fetch: popular,
+  });
 
-    state = {
-        movies:[],
-        infos:{},
-        page:1,
-        searchText: '',
-        searchTextTimeout: 0,
+  useEffect(() => {
+    async function fetchData(page = 1) {
+      const response =
+        search === ""
+          ? await category.fetch(page).get()
+          : await find(search, page).get();
+
+      const data = response.data.results;
+      setMovieList(data);
     }
 
-    componentDidMount(){
-    this.loadMovies('');
-}
+    fetchData();
 
-    loadMovies = async (searchText, page=1) => { 
-    const response = searchText.length>0? await find(searchText, page).get() : await api(page).get();
-    const {results, ...infos} = response.data;
-    this.setState({movies:results, infos, page, searchText})
-}
+    console.log(movieList)
 
+  }, [category]);
 
+  function prevPage() {
+    const { page, search } = this.state;
+    if (page === 1) return;
 
+    const pageNumber = page - 1;
+  }
 
-    prevPage = () => {
-        const {page, searchText} = this.state;
-        if(page === 1) return;
+  function nextPage() {
+    const { page, infos, search } = this.state;
 
-        const pageNumber = page-1;
+    if (page === infos.total_pages) return;
 
-        this.loadMovies(searchText, pageNumber)
-    };
+    const pageNumber = page + 1;
+  }
 
-    nextPage = () => {
-
-        const {page , infos, searchText} = this.state;
-
-        if(page === infos.total_pages) return;
-
-        const pageNumber = page+1;
-
-        this.loadMovies(searchText ,pageNumber)
-    };
-
-    handleNewText = (event) => {
-        const searchText = event.target.value;
-        
-        clearTimeout(this.state.searchTextTimeout);
-    
-        this.setState({
-          searchText,
-          searchTextTimeout: setTimeout(
-            () => this.loadMovies(searchText),
-            500
-          ),
-        });
-      };
+  function handleSearch(event) {
+    let data = event.target.value;
+    setSearch(data);
+  }
 
 
-    render(){
-
-        const {movies, infos, page} = this.state;
-
-    return (<section>
-    <div className ='search'>
+  return (
+    <div>
+      <div className="search">
+        <button onClick={() => setCategory({ fetch: popular, })}> Popular </button>
+        <button onClick={() => setCategory({ fetch: playing, })}> Now Playing </button>
+        <button onClick={() => setCategory({ fetch: treding, })}> Trading </button>
         <form>
-        <input type='text' placeholder='search' onChange={this.handleNewText}/>
-        </form>
+          <input type="text" placeholder="search" onChange={handleSearch} /> </form>
+        <button onClick={() => setCategory({ fetch: upcoming, })}> Upcoming </button>
+        <button onClick={() => setCategory({ fetch: topRated, })}> Top Rated </button>
+      </div>
+      <div className='movie-list'>
+        <ul>
+          {movieList.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
+                <p>{movie.title}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="pages"> </div>
     </div>
-    
-    <div className='movie-list'>
-        {movies.map(movie => ( 
-            <ul key={movie.id}>
-            <Link to = {`/movie/${movie.id}`}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt='img' ></img>
-            <p>{movie.title}</p>
-            </Link>
-            </ul>
-        ))}
-    </div>
-
-    <div className='pages'>
-            <button disabled={page === 1} onClick={this.prevPage}>Prev</button>
-            <button disabled={page === infos.total_pages} onClick={this.nextPage}>Next</button>
-        </div>
-        </section>
-    )}
+  )
 }

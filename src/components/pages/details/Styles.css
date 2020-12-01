@@ -1,4 +1,4 @@
-.container{
+.container {
   position: relative;
   margin: 5vw;
   display: grid;
@@ -6,7 +6,7 @@
   grid-gap: 2rem;
 }
 
-.container aside{
+.container aside {
   width: 30vw;
   display: flex;
   justify-content: center;
@@ -14,13 +14,13 @@
   border-radius: 20px;
 }
 
-.container aside img{
+.container aside img {
   width: 100%;
   height: 80vh;
   border-radius: 20px;
 }
 
-.container-info{
+.container-info {
   position: relative;
   border-radius: 20px;
   width: 56vw;
@@ -29,11 +29,11 @@
 
 }
 
-.video{
+.video {
   height: 58vh;
   position: relative;
   padding-bottom: "56.25%";
-  padding-top:25;
+  padding-top: 25;
 }
 
 .video iframe {
@@ -45,71 +45,71 @@
   height: 100%;
 }
 
-.container-about{
+.container-about {
   position: absolute;
   padding: 10px;
   border-radius: 20px;
   font-family: 'Times New Roman', Times, serif;
 }
 
- .container-about h1{
-   padding: 1rem;
-  color:brown;
+.container-about h1 {
+  padding: 1rem;
+  color: brown;
   font-weight: bold;
-  display:flex;
+  display: flex;
   justify-content: center;
- }
-
-.container-about p strong{
- color:brown;
- font-weight: bold;
 }
 
-.container-about p{
-  color:black;
+.container-about p strong {
+  color: brown;
   font-weight: bold;
- }
+}
 
-.container-about span{
- display: flex;
- justify-content: center;
- grid-gap: 0.5rem;
- }
+.container-about p {
+  color: black;
+  font-weight: bold;
+}
 
- .rate{
-   padding-left: 2rem;
- }
+.container-about span {
+  display: flex;
+  justify-content: center;
+  grid-gap: 0.5rem;
+}
 
- @media only screen and (max-width: 840px) {
-  .container{
+.rate {
+  padding-left: 2rem;
+}
+
+@media only screen and (max-width: 840px) {
+  .container {
     grid-template-columns: repeat(1, 1fr);
     width: 80vw;
   }
 
-  .container-info{
+  .container-info {
     width: 80vw;
   }
 
-  .container aside{
+  .container aside {
     width: 80vw;
   }
 
-  .container aside img{
+  .container aside img {
     width: 100%;
     height: 80vh;
   }
 
-  .video{
+  .video {
     width: 80vw;
     height: 40vh;
   }
 
-  .container-about p strong{
+  .container-about p strong {
     font-size: 3vw;
-   }
-   
-   .container-about p{
+  }
+
+  .container-about p {
     font-size: 2.5vw;
-    }
- 
+  }
+
 }

@@ -1,16 +1,13 @@
-/* eslint-disable no-unused-vars */
-import React, {Component} from 'react';
+import React from 'react';
 import './Styles.css';
-import Routes from  './Route'
+import Routes from './Route';
 
-
-
-const App = () =>{
-    return ( 
-      <div className = "App" >
-        <Routes/>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div className="App" >
+      <Routes />
+    </div>
+  );
+}
 
 export default App;

@@ -4,11 +4,12 @@ import './GoBackStyles.css';
 import { useHistory } from "react-router-dom";
 
 
-const Home = () =>{
-let history = useHistory();
-return  (<div className= 'home'>
-<button class="button button1" onClick={() => history.goBack()}>Movie Maker</button>
-</div>
-)}
+const GoBack = () => {
+    let history = useHistory();
+    return (<div className='home'>
+        <button className="button" onClick={history.goBack}>Movie Maker</button>
+    </div>
+    )
+}
 
-export default Home;
+export default GoBack;

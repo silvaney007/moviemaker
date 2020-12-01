@@ -1,4 +1,3 @@
-
 .search {
   padding: 2vh;
   display: flex;
@@ -6,7 +5,7 @@
   align-items: center;
 }
 
-.search input{
+.search input {
   width: 30vw;
   height: 4vh;
   border-radius: 10px;
@@ -14,32 +13,33 @@
 }
 
 
-.movie-list{
+.movie-list ul {
   padding: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
 }
 
-.movie-list ul{
+.movie-list ul li{
   background: antiquewhite;
   border: 1px solid antiquewhite;
   border-radius: 20px;
   margin: 0.1rem;
+  list-style-type: none;
 }
 
-.movie-list ul:hover {
-transform: scale(1.1); 
-background-color:brown;
+.movie-list ul li:hover {
+  transform: scale(1.1);
+  background-color: brown;
 }
 
-.movie-list ul img {
+.movie-list ul li img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
 
-.movie-list ul p {
+.movie-list ul li p {
   border: 1vw;
   text-align: center;
   color: black;
@@ -48,13 +48,13 @@ background-color:brown;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.movie-list ul:hover p {
- color:yellow;
+.movie-list ul li:hover p {
+  color: yellow;
 }
 
 .pages {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   margin-bottom: 20px;
 }
 
@@ -62,7 +62,7 @@ background-color:brown;
   padding: 18px;
   border-radius: 5px;
   border: 0;
-  background:brown;
+  background: brown;
   color: black;
   font-size: 16px;
   font-weight: bold;
@@ -84,13 +84,13 @@ background-color:brown;
 
 
 @media only screen and (max-width: 840px) {
-  .movie-list{
+  .movie-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
   }
 
-  .movie-list ul p {
+  .movie-list ul li p {
     font-size: 100%;
   }
 }

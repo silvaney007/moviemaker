@@ -1,19 +1,17 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import {BrowserRouter,Switch ,Route, withRouter} from 'react-router-dom';
-import Details from './components/pages/details/Details';
-import Page from './components/pages/Home';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Details from "./components/pages/details/Details";
+import Home from "./components/pages/Home";
 
+const Routes = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component = {Home}/>
+        <Route path="/movie/:id" component={Details} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-
-
-const routes = () => (
-<BrowserRouter>
-<Switch>
-<Route exact path='/' component= {Page}/>
-<Route path='/movie/:id' component= {Details}/>
-</Switch>
-</BrowserRouter>
-);
-
-export default routes;
+export default Routes;
