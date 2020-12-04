@@ -7,6 +7,6 @@ text-decoration: none;
 
 body{
 font-family: 'Courier New', Courier, monospace;
-background: #566573;
-background-image: url('./assets/img/shley-tree-1.png');
+background: white;
+background-image: url('../img/skulls.png');
 }
