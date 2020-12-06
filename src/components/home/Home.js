@@ -37,10 +37,7 @@ export default function Home() {
         search.text === ""
           ? await category.fetch(page).get()
           : await find(search.text).get();
-
       const data = response.data.results;
-
-      console.log(data)
 
       setMovieList(data);
       setCountPage(page);
@@ -55,11 +52,8 @@ export default function Home() {
 
     if (countPage > 1) {
       async function loadMovie() {
-        console.log(category.fetch)
         const response = await category.fetch(countPage).get();
         const newData = response.data.results;
-
-
         setMovieList(oldData => [...oldData, ...newData]);
       }
       loadMovie();
@@ -100,7 +94,7 @@ export default function Home() {
           <ul>
             {movieList.map(movie => (
               <li key={movie.id}>
-                <Link to={`/movie/${movie.id}`}>
+                <Link to={`/${movie.id}`}>
                   {movie.backdrop_path ?
                     <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
                     <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}

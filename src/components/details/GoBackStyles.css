@@ -4,14 +4,12 @@
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: darkslategray;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button {
   width: 6rem;
-  height: 100%;
-  background-color: #2e3131;
+  height: 97%;
+  background-color: darkslategray;
   border-radius: 0px 10px 10px 0px;
 }
 

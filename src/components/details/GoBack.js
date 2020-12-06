@@ -12,7 +12,7 @@ function GoBack() {
     let history = useHistory();
 
     function handleClick() {
-        history.goBack();
+        history.push("/");;
     }
     return (<div className='goBack'>
         <button className="button" onClick={handleClick}>
