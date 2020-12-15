@@ -16,9 +16,6 @@ import Link from '@material-ui/icons/LinkRounded';
 
 export default function Details(props) {
 
-
-    const [movieId, setMovieId] = useState(props)
-
     const [movie, setMovie] = useState({
         details: {},
         trailer: "",
@@ -29,7 +26,6 @@ export default function Details(props) {
     useEffect(() => {
         async function details() {
             const id = props.id;
-            console.log(id + "In")
             const response1 = await detail(id).get();
             const response2 = await trailers(id).get();
 
