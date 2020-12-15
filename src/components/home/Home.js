@@ -42,7 +42,11 @@ export default function Home() {
 
   useEffect(() => {
 
+    if(document.querySelector(".pages").style.display === "none" && search.text === "")
+    document.querySelector(".pages").style.display = "flex";
+
     async function fetchData(page = 1) {
+
       const response =
         search.text === ""
           ? await category.fetch(page).get()
@@ -77,7 +81,6 @@ export default function Home() {
   function loadMovies(data) {
 
     data.map(movie => {
-
       document.getElementById(`${movie.id}`).style.animation = "fadeOut 1s";
       document.getElementById(`${movie.id}`).addEventListener("animationstart", (event) => {
         event.target.style.animation = "fadeIn 4s";
@@ -103,7 +106,9 @@ export default function Home() {
 
   function handleSearch(event) {
 
+    document.querySelector(".pages").style.display = "none";
     const newText = event.target.value;
+
     clearTimeout(search.timer);
 
     search.timer = setTimeout(() => {
@@ -111,6 +116,7 @@ export default function Home() {
         text: newText,
       })
     }, 500);
+
   }
 
 

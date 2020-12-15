@@ -140,7 +140,7 @@
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;
-  animation: goUp;
+  animation: fadeIn 5s;
 }
 
 .pages button {
@@ -203,18 +203,6 @@
   }
   to {
     opacity: 0;
-  }
-}
-
-@keyframes goUp {
-  0% {
-    display: none;
-  }
-  50% {
-    display: none;
-  }
-  100% {
-    display: block;
   }
 }
 
