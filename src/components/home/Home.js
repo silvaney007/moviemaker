@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Details from "../details/Details";
 import {
   find,
   trending,
@@ -13,7 +13,9 @@ import {
   upcoming,
 } from "../../core/service/Api";
 import "./Home.css";
+import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
+import CloseIcon from '@material-ui/icons/CloseRounded';
 import auxImg from "../../img/no-preview.png";
 
 
@@ -28,6 +30,7 @@ export default function Home() {
     upcoming,
   }
 
+  const [movieId, setMovieID] = useState("");
   const [page, setPage] = useState(1);
   const [movieList, setMovieList] = useState([]);
   const [search, setSearch] = useState({
@@ -42,8 +45,8 @@ export default function Home() {
 
   useEffect(() => {
 
-    if(document.querySelector(".pages").style.display === "none" && search.text === "")
-    document.querySelector(".pages").style.display = "flex";
+    if (document.querySelector(".pages").style.display === "none" && search.text === "")
+      document.querySelector(".pages").style.display = "flex";
 
     async function fetchData(page = 1) {
 
@@ -61,6 +64,7 @@ export default function Home() {
     fetchData();
 
   }, [category.fetch, search.text]);
+  
 
 
   useEffect(() => {
@@ -83,7 +87,7 @@ export default function Home() {
     data.map(movie => {
       document.getElementById(`${movie.id}`).style.animation = "fadeOut 1s";
       document.getElementById(`${movie.id}`).addEventListener("animationstart", (event) => {
-        event.target.style.animation = "fadeIn 4s";
+        event.target.style.animation = "fadeIn 2s ease-in";
       })
 
       return "";
@@ -99,7 +103,10 @@ export default function Home() {
     document.getElementById(category.name).style.color = "white";
     document.getElementById(id).style.backgroundColor = "white";
     document.getElementById(id).style.color = "#2e3131";
+    document.querySelector(".search form input").value = "";
 
+
+    setSearch({text: ""})
     setCategory({ name: id, fetch: categories[id] })
   }
 
@@ -119,52 +126,72 @@ export default function Home() {
 
   }
 
+  function details(props) {
+    setMovieID(()=> props)
+    const detail = document.querySelector(".details");
+    detail.style.display = "flex";
+  }
+
+  function closeDetail() {
+    setMovieID(()=> "");
+    const detail = document.querySelector(".details");
+    detail.style.display = "none";
+  }
+
 
   return (
-    <div className="home">
-
-      <div className="nav-bar">
-        <div className="button-container">
-          <button id="popular" onClick={handleCategory}> Popular </button>
-          <button id="trending" onClick={handleCategory}> Trending </button>
-          <button id="topRated" onClick={handleCategory}> Top Rated </button>
-          <button id="upcoming" onClick={handleCategory}> Upcoming </button>
-          <button id="playing" onClick={handleCategory}> Now Playing </button>
+    <div className="app">
+      <div className="home">
+        <div className="nav-bar">
+          <div className="button-container">
+            <button id="popular" onClick={handleCategory}> Popular </button>
+            <button id="trending" onClick={handleCategory}> Trending </button>
+            <button id="topRated" onClick={handleCategory}> Top Rated </button>
+            <button id="upcoming" onClick={handleCategory}> Upcoming </button>
+            <button id="playing" onClick={handleCategory}> Now Playing </button>
+          </div>
         </div>
 
+        <div className="movie-container">
+          <div className="search">
+            <form>
+              <input type="text" placeholder="Search a movie..." onChange={handleSearch} />
+            </form>
+          </div>
+          <div className='movie-list'>
+            <ul>
+              {movieList.map(movie => (
+                <li key={movie.id} id={movie.id}>
+                  <a onClick={() => details(movie.id)}>
+                    {movie.backdrop_path ?
+                      <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
+                      <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
+                    <span className="title"><p>{movie.title}</p></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="pages">
+            <button onClick={() => setPage(prevPage => prevPage + 1)}> Load... </button>
+          </div>
+        </div>
+
+        <div className="top">
+          <a onClick={() => window.scrollTo(0, 0)}>
+            <ExpandLessIcon id="up" />
+          </a>
+        </div>
       </div>
 
-      <div className="movie-container">
-        <div className="search">
-          <form>
-            <input type="text" placeholder="Search a movie..." onChange={handleSearch} />
-          </form>
+      <section className="details">
+        <div className="close">
+        <CloseIcon id="close" onClick ={closeDetail}></CloseIcon>
         </div>
-        <div className='movie-list'>
-          <ul>
-            {movieList.map(movie => (
-              <li key={movie.id} id={movie.id}>
-                <Link to={`/${movie.id}`}>
-                  {movie.backdrop_path ?
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
-                    <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
-                  <span className="title"><p>{movie.title}</p></span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="pages">
-          <button onClick={() => setPage(prevPage => prevPage + 1)}> Load... </button>
-        </div>
-      </div>
-
-      <div className="top">
-        <a onClick={() => window.scrollTo(0, 0)}>
-          <ExpandLessIcon id="up" />
-        </a>
-      </div>
+        {movieId !== "" &&
+        <Details id={movieId} />}
+      </section>
     </div>
   )
 }

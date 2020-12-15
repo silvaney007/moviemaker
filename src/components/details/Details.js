@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from 'react';
 import './Detail.css';
 import { trailers, detail } from '../../core/service/Api';
-import GoBack from './GoBack'
 import animation from "./Animation.js"
 import Genre from '@material-ui/icons/MovieFilterRounded';
 import Idiom from '@material-ui/icons/LanguageRounded';
@@ -17,6 +16,9 @@ import Link from '@material-ui/icons/LinkRounded';
 
 export default function Details(props) {
 
+
+    const [movieId, setMovieId] = useState(props)
+
     const [movie, setMovie] = useState({
         details: {},
         trailer: "",
@@ -26,12 +28,14 @@ export default function Details(props) {
 
     useEffect(() => {
         async function details() {
-            const { id } = props.match.params;
+            const id = props.id;
+            console.log(id + "In")
             const response1 = await detail(id).get();
             const response2 = await trailers(id).get();
 
             const data = response1.data;
             const trailer = response2.data.results[0].key;
+
 
             setMovie({ details: data, trailer, genres: data.genres, idiom: data.spoken_languages });
         }
@@ -43,9 +47,6 @@ export default function Details(props) {
     return (
         <>
             <div className="detail">
-                <div className="navbar">
-                    <GoBack />
-                </div>
                 <div className='detail-container'>
                     <div className='detail-img' onMouseMove={animation}>
                         <img src={`https://image.tmdb.org/t/p/w500${movie.details.poster_path}`} alt='img'></img>

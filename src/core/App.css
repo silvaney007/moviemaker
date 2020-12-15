@@ -1,12 +1,14 @@
-*  {
-margin: 0;
-padding: 0;
-outline: 0;
-text-decoration: none;
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Alfa+Slab+One:wght@600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  text-decoration: none;
 }
 
-body{
-font-family: 'Courier New', Courier, monospace;
-background: white;
-background-image: url('../img/skulls.png');
+body {
+  font-family: "Alfa Slab One", cursive;
+  background: white;
+  background-image: url("../img/skulls.png");
 }
