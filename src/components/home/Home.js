@@ -20,18 +20,28 @@ import auxImg from "../../img/no-preview.png";
 
 export default function Home() {
 
-  const [countPage, setCountPage] = useState(1);
+  const categories = {
+    trending,
+    playing,
+    popular,
+    topRated,
+    upcoming,
+  }
+
+  const [page, setPage] = useState(1);
   const [movieList, setMovieList] = useState([]);
   const [search, setSearch] = useState({
     text: "",
     timer: 0,
   });
   const [category, setCategory] = useState({
+    name: "popular",
     fetch: popular,
   });
 
 
   useEffect(() => {
+
     async function fetchData(page = 1) {
       const response =
         search.text === ""
@@ -40,31 +50,60 @@ export default function Home() {
       const data = response.data.results;
 
       setMovieList(data);
-      setCountPage(page);
+      loadMovies(data);
+      setPage(page);
     }
 
     fetchData();
 
-  }, [category, search]);
+  }, [category.fetch, search.text]);
 
 
   useEffect(() => {
 
-    if (countPage > 1) {
+    if (page > 1) {
       async function loadMovie() {
-        const response = await category.fetch(countPage).get();
+        const response = await category.fetch(page).get();
         const newData = response.data.results;
         setMovieList(oldData => [...oldData, ...newData]);
+        loadMovies(newData);
       }
       loadMovie();
     }
 
-  }, [countPage]);
+  }, [page]);
+
+
+  function loadMovies(data) {
+
+    data.map(movie => {
+
+      document.getElementById(`${movie.id}`).style.animation = "fadeOut 1s";
+      document.getElementById(`${movie.id}`).addEventListener("animationstart", (event) => {
+        event.target.style.animation = "fadeIn 4s";
+      })
+
+      return "";
+    })
+  }
+
+
+  function handleCategory(event) {
+
+    const id = event.target.id;
+
+    document.getElementById(category.name).style.backgroundColor = "#2e3131";
+    document.getElementById(category.name).style.color = "white";
+    document.getElementById(id).style.backgroundColor = "white";
+    document.getElementById(id).style.color = "#2e3131";
+
+    setCategory({ name: id, fetch: categories[id] })
+  }
 
 
   function handleSearch(event) {
 
-    let newText = event.target.value;
+    const newText = event.target.value;
     clearTimeout(search.timer);
 
     search.timer = setTimeout(() => {
@@ -78,22 +117,27 @@ export default function Home() {
   return (
     <div className="home">
 
-      <div className="search">
-        <button onClick={() => setCategory({ fetch: topRated })}> Top Rated </button>
-        <button onClick={() => setCategory({ fetch: trending })}> Trending </button>
-        <button onClick={() => setCategory({ fetch: popular })}> Popular </button>
-        <button onClick={() => setCategory({ fetch: upcoming })}> Upcoming </button>
-        <button onClick={() => setCategory({ fetch: playing })}> Now Playing </button>
-        <form>
-          <input type="text" placeholder="Search a movie..." onChange={handleSearch} />
-        </form>
+      <div className="nav-bar">
+        <div className="button-container">
+          <button id="popular" onClick={handleCategory}> Popular </button>
+          <button id="trending" onClick={handleCategory}> Trending </button>
+          <button id="topRated" onClick={handleCategory}> Top Rated </button>
+          <button id="upcoming" onClick={handleCategory}> Upcoming </button>
+          <button id="playing" onClick={handleCategory}> Now Playing </button>
+        </div>
+
       </div>
 
       <div className="movie-container">
+        <div className="search">
+          <form>
+            <input type="text" placeholder="Search a movie..." onChange={handleSearch} />
+          </form>
+        </div>
         <div className='movie-list'>
           <ul>
             {movieList.map(movie => (
-              <li key={movie.id}>
+              <li key={movie.id} id={movie.id}>
                 <Link to={`/${movie.id}`}>
                   {movie.backdrop_path ?
                     <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
@@ -106,7 +150,7 @@ export default function Home() {
         </div>
 
         <div className="pages">
-          <button onClick={() => setCountPage(prevPage => prevPage + 1)}> Load... </button>
+          <button onClick={() => setPage(prevPage => prevPage + 1)}> Load... </button>
         </div>
       </div>
 
