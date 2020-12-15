@@ -6,9 +6,8 @@ export default function animation(event) {
     let xAxis = (window.innerWidth / 2 - event.pageX) / 25;
     let yAxis = (window.innerHeight / 2 - event.pageY) / 25;
 
-    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
     card.style.backgroundColor = "darkslategray";
-    logo.style.transform = "translateZ(500px) rotateZ(-15deg)";
+    logo.style.transform = "translateZ(500px) rotateZ(-10deg)";
 
     card.addEventListener("mouseenter", (event) => {
         card.style.transition = "none";
@@ -17,7 +16,6 @@ export default function animation(event) {
     card.addEventListener("mouseleave", (event) => {
         card.style.transition = "all 0.5s ease";
         card.style.backgroundColor = "white";
-        card.style.transform = `rotateY(0deg) rotateX(0deg)`;
         logo.style.transform = "translateZ(0px) rotateZ(0deg)";
     });
 

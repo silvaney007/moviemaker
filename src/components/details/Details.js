@@ -16,6 +16,7 @@ import Link from '@material-ui/icons/LinkRounded';
 
 export default function Details(props) {
 
+
     const [movie, setMovie] = useState({
         details: {},
         trailer: "",
