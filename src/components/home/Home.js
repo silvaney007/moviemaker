@@ -128,14 +128,12 @@ export default function Home() {
 
   function details(props) {
     setMovieID(()=> props)
-    const detail = document.querySelector(".details");
-    detail.style.display = "flex";
+    document.querySelector(".details").style.display = "flex";
   }
 
   function closeDetail() {
     setMovieID(()=> "");
-    const detail = document.querySelector(".details");
-    detail.style.display = "none";
+    document.querySelector(".details").style.display = "none";
   }
 
 

@@ -171,14 +171,14 @@
 .top a {
   position: fixed;
   top: 90%;
-  right: 3rem;
-  width: 4rem;
-  height: 3rem;
+  right: 4rem;
+  width: 3rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 5px solid darkslategray;
-  border-radius: 50px;
+  border-radius: 20px;
   opacity: 0.2;
 }
 
@@ -188,8 +188,8 @@
 }
 
 #up {
-  width: 10rem;
-  height: 5rem;
+  width: 3rem;
+  height: 2rem;
   color: darkslategray;
 }
 

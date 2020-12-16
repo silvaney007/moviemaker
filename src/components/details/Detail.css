@@ -1,22 +1,23 @@
 .detail {
-  width: 90vw;
-  height: 80vh;
+  width: 95vw;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .detail-container {
-  width: 85vw;
-  height: 75vh;
+  width: 90vw;
+  height: 80vh;
   margin: 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
-  background-color: white;
   border-radius: 20px;
+  background-color: azure;
+  background-image: url("../../img/skulls.png");
 }
 
 .detail-img {
@@ -32,11 +33,19 @@
   animation: fadeIn 3.5s ease-in;
 }
 
+.detail-img:hover{
+  background-Color: darkslategray;
+}
+
 .detail-img img {
   width: 80%;
   height: 90%;
   border-radius: 20px;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 6px 50px rgba(0, 0, 0, 0.19);
+}
+
+.detail-img img:hover{
+  transform :translateZ(500px) rotateZ(-10deg);
 }
 
 .detail-info {
@@ -50,7 +59,7 @@
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
-  animation: fadeIn 3.5s ease-in;
+  animation: fadeIn 4s ease-in;
 }
 
 .detail-video {
@@ -93,7 +102,7 @@
 
 .about-2 {
   width: 30%;
-  padding: 0.3rem;
+  padding: 0.2rem;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -105,6 +114,7 @@
   padding-right: 0.2rem;
   color: brown;
 }
+
 
 .icon2 {
   padding-right: 0.2rem;

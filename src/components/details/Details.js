@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from 'react';
 import './Detail.css';
 import { trailers, detail } from '../../core/service/Api';
-import animation from "./Animation.js"
 import Genre from '@material-ui/icons/MovieFilterRounded';
 import Idiom from '@material-ui/icons/LanguageRounded';
 import Release from '@material-ui/icons/EventAvailableRounded';
@@ -45,7 +44,7 @@ export default function Details(props) {
         <>
             <div className="detail">
                 <div className='detail-container'>
-                    <div className='detail-img' onMouseMove={animation}>
+                    <div className='detail-img'>
                         <img src={`https://image.tmdb.org/t/p/w500${movie.details.poster_path}`} alt='img'></img>
                     </div>
                     <div className='detail-info'>
@@ -61,10 +60,10 @@ export default function Details(props) {
                                 <p className="overview">{movie.details.overview}</p>
                             </div>
                             <div className="about-2">
-                                <p className="classification"> <Classification className="icon2" /> {movie.details.vote_average} </p>
-                                <p className="genre"><Genre className="icon" /> <span>  {movie.genres.map(genre => `${genre.name} `)} </span></p>
-                                <p className="idiom"> <Idiom className="icon" /> <span>{movie.idiom.map(idiom => (idiom.english_name))} </span> </p>
-                                <p className="release"> <Release className="icon" /> <span>{movie.details.release_date} </span></p>
+                                <p className="classification"> <Classification className="icon2" /> <span> {movie.details.vote_average} </span></p>
+                                <p className="genre"><Genre className="icon" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
+                                <p className="idiom"> <Idiom className="icon" /> <span> {movie.idiom.map(idiom => (idiom.english_name))} </span> </p>
+                                <p className="release"> <Release className="icon" /> <span> {movie.details.release_date} </span></p>
                                 <p className="link-a"> <Link className="icon" />
                                     <a href={movie.details.homepage}>{movie.details.title}</a>
                                 </p>
