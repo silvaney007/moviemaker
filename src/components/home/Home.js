@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Details from "../details/Details";
-import { find, trending, playing, popular, topRated, upcoming, trailers, detail } from "../../core/service/Api";
+import { find, trending, playing, popular, topRated, upcoming } from "../../core/service/Api";
 import "./Home.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
@@ -38,17 +38,21 @@ export default function Home() {
 
   useEffect(() => {
 
-    if (document.querySelector(".pages").style.display === "none" && search.text === "")
+    if (document.querySelector(".pages").style.display === "none" && search.text === "") {
       document.querySelector(".pages").style.display = "flex";
+    }
 
     async function fetchData(page = 1) {
 
-      const response =
-        search.text === ""
-          ? await category.fetch(page).get()
-          : await find(search.text).get();
+      let data = "";
 
-      const data = response.data.results;
+      search.text === ""
+        ? await category.fetch(page).get()
+          .then(response => data = response.data.results)
+          .catch(err => console.log(err))
+        : await find(search.text).get()
+          .then(response => data = response.data.results)
+          .catch(err => console.log(err));
 
       setMovieList(data);
       loadMovies(data);
@@ -67,14 +71,14 @@ export default function Home() {
 
         let newData = "";
 
-        await category.fetch(page).get().then(response => {
-          newData = response.data.results;
-        }).catch(err => console.log(err));
+        await category.fetch(page).get()
+          .then(response => newData = response.data.results)
+          .catch(err => console.log(err));
 
         setMovieList(oldData => [...oldData, ...newData]);
         loadMovies(newData);
       }
-      
+
       loadMovie();
     }
 
