@@ -64,7 +64,7 @@
 
 .detail-video {
   width: 45vw;
-  height: 46vh;
+  height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,16 +78,16 @@
 
 .detail-about {
   width: 45vw;
-  height: 24vh;
+  height: 25vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   border-radius: 0px 0px 20px 20px;
   font-family: "Times New Roman", Times, serif;
-  overflow: auto;
 }
 
 .about-1 {
+  overflow: auto;
   width: 70%;
   padding: 0.5rem;
   font-weight: bold;
@@ -99,12 +99,14 @@
 
 .about-1 h1 {
   color: brown;
-  padding-top: 0.8rem;
+  margin-top: 1rem;
+  font-family: 'Lobster', cursive;
 }
 
 .about-2 {
+  overflow: auto;
   width: 30%;
-  padding: 0.2rem;
+  padding: 0.5rem;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -112,15 +114,24 @@
   justify-content: center;
 }
 
-.icon {
-  padding-right: 0.2rem;
-  color: brown;
+.about-2 p {
+  margin: 0.2rem;
+  display: inline-flex;
 }
 
+.about-2 p span {
+  padding: 0.3rem;
+  display: inline-flex;
+}
+
+.icon {
+  padding-right: 0.1rem;
+  color: gold;
+}
 
 .icon2 {
-  padding-right: 0.2rem;
-  color: gold;
+  padding-right: 0.1rem;
+  color: brown;
 }
 
 .link-a a {

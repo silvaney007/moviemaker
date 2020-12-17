@@ -8,7 +8,7 @@ import { trailers, detail, youTube } from '../../core/service/Api';
 import Genre from '@material-ui/icons/MovieFilterRounded';
 import Idiom from '@material-ui/icons/LanguageRounded';
 import Release from '@material-ui/icons/EventAvailableRounded';
-import Classification from '@material-ui/icons/StarsRounded';
+import Classification from '@material-ui/icons/Stars';
 import Link from '@material-ui/icons/LinkRounded';
 import auxImg from "../../img/no-preview.png";
 
@@ -86,7 +86,6 @@ export default function Details(props) {
     }
 
 
-
     return (
         <>
             <div className="detail">
@@ -109,11 +108,11 @@ export default function Details(props) {
                                 <p className="overview">{movie.details.overview}</p>
                             </div>
                             <div className="about-2">
-                                <p className="classification"> <Classification className="icon2" /> <span> {movie.details.vote_average} </span></p>
-                                <p className="genre"><Genre className="icon" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
-                                <p className="idiom"> <Idiom className="icon" /> <span> {movie.idiom.map(idiom => (idiom.english_name))} </span> </p>
-                                <p className="release"> <Release className="icon" /> <span> {movie.details.release_date} </span></p>
-                                <p className="link-a"> <Link className="icon" />
+                                <p className="classification"> <Classification className="icon" /> <span> {movie.details.vote_average} </span></p>
+                                <p className="genre"><Genre className="icon2"/>  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
+                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map(idiom => `${idiom.english_name} `)} </span> </p>
+                                <p className="release"> <Release className="icon2" /> <span> {movie.details.release_date} </span></p>
+                                <p className="link-a"> <Link className="icon2" />
                                     <a href={movie.details.homepage}>{movie.details.title}</a>
                                 </p>
                             </div>
