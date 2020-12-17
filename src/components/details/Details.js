@@ -37,20 +37,20 @@ export default function Details(props) {
             let trailer = "";
             let data = [];
 
+
+            console.log(movieProps.id)
+
             await detail(movieProps.id).get().then(result => {
                 data = result.data;
             }).catch(err => console.log(err));
 
-
             const response = await getTrailer();
 
-
             if (response.key) {
-                trailer = response.trailer.data.results[0].key;
+                trailer = response.trailer;
             } else {
-                trailer = response.trailer.id.videoId;
+                trailer = response.trailer;
             }
-
 
             setMovie({ details: data, trailer, genres: data.genres, idiom: data.spoken_languages });
         }
@@ -66,14 +66,18 @@ export default function Details(props) {
         }
 
         await trailers(movieProps.id).get().then(async result => {
-            if (result.data.results[0] !== undefined && result.data.results.length > 0) {
-                response.trailer = result;
+            if (result.data.results[0] !== undefined || result.data.results.length > 0) {
+                response.trailer = result.data.results[0].key;
+                response.key = true;
             } else {
 
                 await youTube(movieProps.title).get().then(result => {
-                    response.trailer = result.data.items[0];
+                    response.trailer = result.data.items[0].id.videoId;
                     response.key = false;
-                }).catch(err => console.log(err));
+                }).catch(err => {
+                    response.trailer = "Zw_FKq10S8M";
+                    response.key = false;
+                })
             }
         }).catch(err => console.log(err));
 

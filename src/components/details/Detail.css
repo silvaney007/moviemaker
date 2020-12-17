@@ -84,6 +84,7 @@
   justify-content: center;
   border-radius: 0px 0px 20px 20px;
   font-family: "Times New Roman", Times, serif;
+  overflow: auto;
 }
 
 .about-1 {
@@ -98,6 +99,7 @@
 
 .about-1 h1 {
   color: brown;
+  padding-top: 0.8rem;
 }
 
 .about-2 {

@@ -60,16 +60,21 @@ export default function Home() {
   }, [category.fetch, search.text]);
 
 
-
   useEffect(() => {
 
     if (page > 1) {
       async function loadMovie() {
-        const response = await category.fetch(page).get();
-        const newData = response.data.results;
+
+        let newData = "";
+
+        await category.fetch(page).get().then(response => {
+          newData = response.data.results;
+        }).catch(err => console.log(err));
+
         setMovieList(oldData => [...oldData, ...newData]);
         loadMovies(newData);
       }
+      
       loadMovie();
     }
 
