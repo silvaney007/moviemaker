@@ -45,13 +45,13 @@
   border-radius: 20px 20px 0px 0px;
 }
 
-#popular {
+#upcoming {
   border-radius: 10px 0px 0px 0px;
   background-color: white;
   color: #2e3131;
 }
 
-#playing {
+#popular{
   border-radius: 0px 10px 0px 0px;
 }
 

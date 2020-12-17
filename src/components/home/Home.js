@@ -4,14 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Details from "../details/Details";
-import {
-  find,
-  trending,
-  playing,
-  popular,
-  topRated,
-  upcoming,
-} from "../../core/service/Api";
+import { find, trending, playing, popular, topRated, upcoming, trailers, detail } from "../../core/service/Api";
 import "./Home.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
@@ -38,8 +31,8 @@ export default function Home() {
     timer: 0,
   });
   const [category, setCategory] = useState({
-    name: "popular",
-    fetch: popular,
+    name: "upcoming",
+    fetch: upcoming,
   });
 
 
@@ -54,6 +47,7 @@ export default function Home() {
         search.text === ""
           ? await category.fetch(page).get()
           : await find(search.text).get();
+
       const data = response.data.results;
 
       setMovieList(data);
@@ -64,7 +58,7 @@ export default function Home() {
     fetchData();
 
   }, [category.fetch, search.text]);
-  
+
 
 
   useEffect(() => {
@@ -106,7 +100,7 @@ export default function Home() {
     document.querySelector(".search form input").value = "";
 
 
-    setSearch({text: ""})
+    setSearch({ text: "" })
     setCategory({ name: id, fetch: categories[id] })
   }
 
@@ -127,12 +121,12 @@ export default function Home() {
   }
 
   function details(props) {
-    setMovieID(()=> props)
+    setMovieID(() => props)
     document.querySelector(".details").style.display = "flex";
   }
 
   function closeDetail() {
-    setMovieID(()=> "");
+    setMovieID(() => "");
     document.querySelector(".details").style.display = "none";
   }
 
@@ -142,13 +136,14 @@ export default function Home() {
       <div className="home">
         <div className="nav-bar">
           <div className="button-container">
-            <button id="popular" onClick={handleCategory}> Popular </button>
-            <button id="trending" onClick={handleCategory}> Trending </button>
-            <button id="topRated" onClick={handleCategory}> Top Rated </button>
             <button id="upcoming" onClick={handleCategory}> Upcoming </button>
             <button id="playing" onClick={handleCategory}> Now Playing </button>
+            <button id="trending" onClick={handleCategory}> Trending </button>
+            <button id="topRated" onClick={handleCategory}> Top Rated </button>
+            <button id="popular" onClick={handleCategory}> Popular </button>
           </div>
         </div>
+
 
         <div className="movie-container">
           <div className="search">
@@ -160,7 +155,7 @@ export default function Home() {
             <ul>
               {movieList.map(movie => (
                 <li key={movie.id} id={movie.id}>
-                  <a onClick={() => details(movie.id)}>
+                  <a onClick={() => details(movie)}>
                     {movie.backdrop_path ?
                       <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
                       <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
@@ -185,10 +180,10 @@ export default function Home() {
 
       <section className="details">
         <div className="close">
-        <CloseIcon id="close" onClick ={closeDetail}></CloseIcon>
+          <CloseIcon id="close" onClick={closeDetail}></CloseIcon>
         </div>
         {movieId !== "" &&
-        <Details id={movieId} />}
+          <Details id={movieId} />}
       </section>
     </div>
   )
