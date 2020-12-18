@@ -1,5 +1,5 @@
-.app{
-  display:block;
+.app {
+  display: block;
 }
 .home {
   width: 100vw;
@@ -50,7 +50,7 @@
   color: #2e3131;
 }
 
-#popular{
+#popular {
   border-radius: 0px 10px 0px 0px;
 }
 
@@ -63,7 +63,7 @@
   flex-direction: column;
 }
 
-.search{
+.search {
   width: 50%;
   margin: 0 auto;
   padding-top: 5rem;
@@ -82,7 +82,6 @@
   border: 0.5rem solid #2e3131;
   margin: 0 auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .search form ::placeholder {
@@ -93,10 +92,9 @@
   opacity: 0.5;
 }
 
-.movie-list{
+.movie-list {
   margin: 0 auto;
 }
-
 
 .movie-list ul {
   padding: 5rem;
@@ -118,32 +116,41 @@
   background-color: darkslategray;
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.movie-list li:hover .title {
   color: lightgoldenrodyellow;
 }
 
-
-.movie-list a{
-  border-radius: 10px 10px 10px 10px;
+.movie-list a {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
 }
 
-.movie-list img{
+.movie-list img {
   width: 100%;
   height: 70%;
   border-radius: 10px 10px 0px 0px;
 }
 
-.movie-list p {
+.title{
   width: 100%;
   height: 30%;
+  color: black;
+  font-size: 16px;
+  font-family: "Lobster", cursive;
+  border-radius: 0px 0px 10px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
-  font-size: 16px;
-  font-family: 'Lobster', cursive;
-  border-radius: 0px 0px 10px 10px;
 }
+
+.title p{
+padding: 1rem;
+}
+
 
 
 .pages {
@@ -196,7 +203,7 @@
   color: darkslategray;
 }
 
-#up:hover{
+#up:hover {
   animation: rotate365 1.3s;
 }
 

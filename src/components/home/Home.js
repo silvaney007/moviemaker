@@ -168,7 +168,9 @@ export default function Home() {
                     {movie.backdrop_path ?
                       <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt='img'></img> :
                       <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
-                    <p className="title">{movie.title}</p>
+                    <div className="title">
+                      <p >{movie.title}</p>
+                    </div>
                   </a>
                 </li>
               ))}
