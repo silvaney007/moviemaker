@@ -36,9 +36,6 @@ export default function Details(props) {
             let trailer = "";
             let data = [];
 
-
-            console.log(props)
-
             await detail(movieProps.id).get().then(result => {
                 data = result.data;
             }).catch(err => console.log(err));
@@ -50,9 +47,7 @@ export default function Details(props) {
             } else {
                 trailer = response.trailer;
             }
-
             console.log(data)
-
 
             setMovie({ details: data, trailer, genres: data.genres, idiom: data.spoken_languages });
         }
@@ -72,7 +67,6 @@ export default function Details(props) {
                 response.trailer = result.data.results[0].key;
                 response.key = true;
             } else {
-
                 await youTube(movieProps.title).get().then(result => {
                     if (result.data.results[0] !== undefined) {
                         response.trailer = result.data.items[0].id.videoId;
@@ -122,6 +116,8 @@ export default function Details(props) {
                                         <img src="https://www.countryflags.io/us/shiny/24.png" alt='img'></img> :
                                         idiom.iso_639_1 === "zh" ?
                                             <img src="https://www.countryflags.io/cn/shiny/24.png" alt='img'></img> :
+                                            idiom.iso_639_1 === "da" ?
+                                            <img src="https://www.countryflags.io/dk/shiny/24.png" alt='img'></img> :
                                             <img src={`https://www.countryflags.io/${idiom.iso_639_1}/shiny/24.png`} alt='img'></img>
                                 )
                                 }</span> </p>
