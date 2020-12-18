@@ -120,11 +120,11 @@
 }
 
 .about-2 p span {
-  padding: 0.3rem;
-  display: inline-flex;
+  padding-top: 1.5px;
+  padding-left: 0.3rem;
 }
 
-.icon {
+.icon1 {
   padding-right: 0.1rem;
   color: gold;
 }
@@ -132,15 +132,6 @@
 .icon2 {
   padding-right: 0.1rem;
   color: brown;
-}
-
-.link-a a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.link-a a:hover {
-  color: violet;
 }
 
 @keyframes fadeIn {

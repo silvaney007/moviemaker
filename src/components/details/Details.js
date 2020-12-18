@@ -9,8 +9,7 @@ import Genre from '@material-ui/icons/MovieFilterRounded';
 import Idiom from '@material-ui/icons/LanguageRounded';
 import Release from '@material-ui/icons/EventAvailableRounded';
 import Classification from '@material-ui/icons/Stars';
-import Link from '@material-ui/icons/LinkRounded';
-import auxImg from "../../img/no-preview.png";
+import auxImg from "../../img/height.png";
 
 
 
@@ -38,7 +37,7 @@ export default function Details(props) {
             let data = [];
 
 
-            console.log(movieProps.id)
+            console.log(props)
 
             await detail(movieProps.id).get().then(result => {
                 data = result.data;
@@ -51,6 +50,9 @@ export default function Details(props) {
             } else {
                 trailer = response.trailer;
             }
+
+            console.log(data)
+
 
             setMovie({ details: data, trailer, genres: data.genres, idiom: data.spoken_languages });
         }
@@ -66,14 +68,19 @@ export default function Details(props) {
         }
 
         await trailers(movieProps.id).get().then(async result => {
-            if (result.data.results[0] !== undefined || result.data.results.length > 0) {
+            if (result.data.results[0] !== undefined) {
                 response.trailer = result.data.results[0].key;
                 response.key = true;
             } else {
 
                 await youTube(movieProps.title).get().then(result => {
-                    response.trailer = result.data.items[0].id.videoId;
-                    response.key = false;
+                    if (result.data.results[0] !== undefined) {
+                        response.trailer = result.data.items[0].id.videoId;
+                        response.key = false;
+                    } else {
+                        response.trailer = "Zw_FKq10S8M";
+                        response.key = false;
+                    }
                 }).catch(err => {
                     response.trailer = "Zw_FKq10S8M";
                     response.key = false;
@@ -108,13 +115,17 @@ export default function Details(props) {
                                 <p className="overview">{movie.details.overview}</p>
                             </div>
                             <div className="about-2">
-                                <p className="classification"> <Classification className="icon" /> <span> {movie.details.vote_average} </span></p>
-                                <p className="genre"><Genre className="icon2"/>  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
-                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map(idiom => `${idiom.english_name} `)} </span> </p>
+                                <p className="classification"> <Classification className="icon1" /> <span> {movie.details.vote_average} </span></p>
+                                <p className="genre"><Genre className="icon2" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
+                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map(idiom =>
+                                    idiom.iso_639_1 === "en" ?
+                                        <img src="https://www.countryflags.io/us/shiny/24.png" alt='img'></img> :
+                                        idiom.iso_639_1 === "zh" ?
+                                            <img src="https://www.countryflags.io/cn/shiny/24.png" alt='img'></img> :
+                                            <img src={`https://www.countryflags.io/${idiom.iso_639_1}/shiny/24.png`} alt='img'></img>
+                                )
+                                }</span> </p>
                                 <p className="release"> <Release className="icon2" /> <span> {movie.details.release_date} </span></p>
-                                <p className="link-a"> <Link className="icon2" />
-                                    <a href={movie.details.homepage}>{movie.details.title}</a>
-                                </p>
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ import "./Home.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
 import CloseIcon from '@material-ui/icons/CloseRounded';
-import auxImg from "../../img/no-preview.png";
+import auxImg from "../../img/width.png";
 
 
 
