@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Details from "../details/Details";
-import { find, trending, playing, popular, topRated, upcoming } from "../../core/service/Api";
+import { find, categories} from "../../core/service/Api";
 import "./Home.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
@@ -15,25 +15,14 @@ import auxImg from "../../img/width.png";
 
 export default function Home() {
 
-  const categories = {
-    trending,
-    playing,
-    popular,
-    topRated,
-    upcoming,
-  }
-
-  const [movieId, setMovieID] = useState("");
+  const [movie, setMovie] = useState("");
   const [page, setPage] = useState(1);
   const [movieList, setMovieList] = useState([]);
   const [search, setSearch] = useState({
     text: "",
     timer: 0,
   });
-  const [category, setCategory] = useState({
-    name: "upcoming",
-    fetch: upcoming,
-  });
+  const [category, setCategory] = useState("popular");
 
 
   useEffect(() => {
@@ -47,7 +36,7 @@ export default function Home() {
       let data = "";
 
       search.text === ""
-        ? await category.fetch(page).get()
+        ? await categories(category, page).get()
           .then(response => data = response.data.results)
           .catch(err => console.log(err))
         : await find(search.text).get()
@@ -61,7 +50,7 @@ export default function Home() {
 
     fetchData();
 
-  }, [category.fetch, search.text]);
+  }, [category, search.text]);
 
 
   useEffect(() => {
@@ -71,7 +60,7 @@ export default function Home() {
 
         let newData = "";
 
-        await category.fetch(page).get()
+        await categories(category, page).get()
           .then(response => newData = response.data.results)
           .catch(err => console.log(err));
 
@@ -100,17 +89,16 @@ export default function Home() {
 
   function handleCategory(event) {
 
-    const id = event.target.id;
+    const newCategory = event.target.id;
 
-    document.getElementById(category.name).style.backgroundColor = "#2e3131";
-    document.getElementById(category.name).style.color = "white";
-    document.getElementById(id).style.backgroundColor = "white";
-    document.getElementById(id).style.color = "#2e3131";
+    document.getElementById(category).style.backgroundColor = "#2e3131";
+    document.getElementById(category).style.color = "white";
+    document.getElementById(newCategory).style.backgroundColor = "white";
+    document.getElementById(newCategory).style.color = "#2e3131";
     document.querySelector(".search form input").value = "";
 
-
     setSearch({ text: "" })
-    setCategory({ name: id, fetch: categories[id] })
+    setCategory(newCategory)
   }
 
 
@@ -130,12 +118,12 @@ export default function Home() {
   }
 
   function details(props) {
-    setMovieID(() => props)
+    setMovie(() => props)
     document.querySelector(".details").style.display = "flex";
   }
 
   function closeDetail() {
-    setMovieID(() => "");
+    setMovie(() => "");
     document.querySelector(".details").style.display = "none";
   }
 
@@ -145,11 +133,10 @@ export default function Home() {
       <div className="home">
         <div className="nav-bar">
           <div className="button-container">
-            <button id="upcoming" onClick={handleCategory}> Upcoming </button>
-            <button id="playing" onClick={handleCategory}> Now Playing </button>
-            <button id="trending" onClick={handleCategory}> Trending </button>
-            <button id="topRated" onClick={handleCategory}> Top Rated </button>
             <button id="popular" onClick={handleCategory}> Popular </button>
+            <button id="top_rated" onClick={handleCategory}> Top Rated </button>
+            <button id="now_playing" onClick={handleCategory}> Now Playing </button>
+            <button id="upcoming" onClick={handleCategory}> Upcoming </button>
           </div>
         </div>
 
@@ -193,8 +180,8 @@ export default function Home() {
         <div className="close">
           <CloseIcon id="close" onClick={closeDetail}></CloseIcon>
         </div>
-        {movieId !== "" &&
-          <Details id={movieId} />}
+        {movie !== "" &&
+          <Details movie={movie} />}
       </section>
     </div>
   )

@@ -10,6 +10,7 @@ import Idiom from '@material-ui/icons/LanguageRounded';
 import Release from '@material-ui/icons/EventAvailableRounded';
 import Classification from '@material-ui/icons/Stars';
 import Country from '@material-ui/icons/PublicRounded';
+import Runtime from '@material-ui/icons/WatchLaterRounded';
 import auxImg from "../../img/height.png";
 
 
@@ -27,8 +28,8 @@ export default function Details(props) {
     });
 
     const movieProps = {
-        id: props.id.id,
-        title: props.id.title
+        id: props.movie.id,
+        title: props.movie.title
     };
 
 
@@ -41,11 +42,12 @@ export default function Details(props) {
             await detail(movieProps.id).get().then(result => {
                 data = result.data;
             }).catch(log => {
-                data = props.id;
+                data = props.movie;
                 err = true;
             })
 
-            const trailer = await getTrailer();
+            console.log(data)
+            const trailer = await getTrailer(data);
 
             if (err) {
                 setMovie({ details: data, trailer, genres: data.genre_ids, idiom: [{ iso_639_1: "en" }], countries: [{ iso_3166_1: "us" }] });
@@ -56,29 +58,19 @@ export default function Details(props) {
         details();
     }, [])
 
+    async function getTrailer(data) {
 
-    async function getTrailer() {
+        let trailer = "Zw_FKq10S8M";
 
-        let err = false;
-        let trailer = "";
-
-        await trailers(movieProps.id).get().then(async result => {
-            trailer = result.data.results[0].key;
-        }).catch(log => {
-            err = true;
-        })
-
-        if (err) {
+        if (data.videos.results.length) {
+            trailer = data.videos.results[0].key;
+        } else {
             await youTube(movieProps.title).get().then(result => {
                 if (result.data.items[0].id.videoId) {
                     trailer = result.data.items[0].id.videoId;
-                } else {
-                    trailer = "Zw_FKq10S8M";
                 }
-
-            }).catch(log => {
-                trailer = "Zw_FKq10S8M";
-            })
+            }).catch(err => {
+            });
         }
 
         return trailer;
@@ -110,13 +102,14 @@ export default function Details(props) {
                                 </div>
                             </div>
                             <div className="about-2">
-                                <p className="classification"> <Classification className="icon1" /> <span> {movie.details.vote_average} </span></p>
+                                <p className="classification"> <Classification className="icon1" /> <span> {movie.details.vote_average}/10 </span></p>
+                                <p className="runtime"> <Runtime className="icon2" /> <span> {movie.details.runtime} </span></p>
                                 <p className="genre"><Genre className="icon2" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
                                 <p className="release"> <Release className="icon2" /> <span> {movie.details.release_date} </span></p>
-                                <p className="country"> <Country className="icon2" /> <span> {movie.countries.map(cod =>
-                                    <img src={`https://www.countryflags.io/${cod.iso_3166_1}/shiny/24.png`} alt={cod.iso_3166_1} ></img>)}</span> </p>
-                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map(cod =>
-                                    <img src={`https://unpkg.com/language-icons/icons/${cod.iso_639_1}.svg`} alt={cod.iso_639_1} width="19px" height="19px"></img>)}</span> </p>
+                                <p className="country"> <Country className="icon2" /> <span> {movie.countries.map((cod, index) =>
+                                    <img key={index} src={`https://www.countryflags.io/${cod.iso_3166_1}/shiny/24.png`} alt={cod.iso_3166_1} ></img>)}</span> </p>
+                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map((cod, index) =>
+                                    <img key={index} src={`https://unpkg.com/language-icons/icons/${cod.iso_639_1}.svg`} alt={cod.iso_639_1} width="20px" height="20px"></img>)}</span> </p>
                             </div>
                         </div>
                     </div>
