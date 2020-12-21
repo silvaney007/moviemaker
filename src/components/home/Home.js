@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Details from "../details/Details";
-import { find, categories} from "../../core/service/Api";
+import { find, categories } from "../../core/service/Api";
 import "./Home.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
@@ -131,6 +131,7 @@ export default function Home() {
   return (
     <div className="app">
       <div className="home">
+
         <div className="nav-bar">
           <div className="button-container">
             <button id="popular" onClick={handleCategory}> Popular </button>
@@ -139,7 +140,6 @@ export default function Home() {
             <button id="upcoming" onClick={handleCategory}> Upcoming </button>
           </div>
         </div>
-
 
         <div className="movie-container">
           <div className="search">
