@@ -1,0 +1,41 @@
+.slide-show {
+  height: 85vh;
+  overflow: hidden;
+}
+
+.slides-list {
+  position: relative;
+  width: 2000px;
+  top: 32px;
+  left: calc(50% - 1000px);
+  display: flex;
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  width: 250px;
+  transition: 0.4s ease-out;
+  left: 0px;
+}
+
+.slide:not(:first-child) {
+  margin-left: -30px;
+}
+
+.slide:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+  cursor: pointer;
+}
+
+.slide:hover ~ .slide {
+  position: relative;
+  left: 280px;
+  transition: 0.4s ease-out;
+}
+
+.slide img {
+  border-radius: 20px;
+  box-shadow: -1rem 0 3rem #000;
+}

@@ -4,8 +4,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Details from "../details/Details";
-import { find, categories } from "../../core/service/Api";
+import { find, categories, discovery } from "../../core/service/Api";
 import "./Home.css";
+import "./Slide.css";
 import "./DetailPopUp.css";
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
 import CloseIcon from '@material-ui/icons/CloseRounded';
@@ -16,6 +17,7 @@ import auxImg from "../../img/width.png";
 export default function Home() {
 
   const [movie, setMovie] = useState("");
+  const [slideMovies, setSlideMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [movieList, setMovieList] = useState([]);
   const [search, setSearch] = useState({
@@ -23,6 +25,16 @@ export default function Home() {
     timer: 0,
   });
   const [category, setCategory] = useState("popular");
+
+
+  useEffect(() => {
+    async function fetchData() {
+      await discovery().get()
+        .then(response => setSlideMovies(response.data.results))
+        .catch(err => console.log(err));
+    }
+    fetchData();
+  }, [])
 
 
   useEffect(() => {
@@ -91,6 +103,7 @@ export default function Home() {
 
     const newCategory = event.target.id;
 
+    window.scrollTo(0, 807);
     document.getElementById(category).style.backgroundColor = "#2e3131";
     document.getElementById(category).style.color = "white";
     document.getElementById(newCategory).style.backgroundColor = "white";
@@ -99,6 +112,7 @@ export default function Home() {
 
     setSearch({ text: "" })
     setCategory(newCategory)
+
   }
 
 
@@ -128,9 +142,41 @@ export default function Home() {
   }
 
 
+  useEffect(() => {
+
+  function showSlides() {
+
+    var slides =  document.querySelector(".slides-list");
+
+    console.log(slides)
+
+    /* const aux = slides[0];
+    slides[0] = slides[slides.length]
+    slides[slides.length] = aux; */
+
+    //setTimeout(showSlides, 2000); // Change image every 2 seconds
+   }
+
+   showSlides();
+
+},[]);
+
   return (
     <div className="app">
       <div className="home">
+        <div className="slide-show">
+          <ul className="slides-list">
+            {slideMovies.map(movie => (
+              <li className="slide" key={movie.id}>
+                <a onClick={() => details(movie)}>
+                  {movie.backdrop_path ?
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='img'></img> :
+                    <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="nav-bar">
           <div className="button-container">
@@ -170,7 +216,7 @@ export default function Home() {
         </div>
 
         <div className="top">
-          <a onClick={() => window.scrollTo(0, 0)}>
+          <a onClick={() => window.scrollTo(0, 807)}>
             <ExpandLessIcon id="up" />
           </a>
         </div>

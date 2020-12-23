@@ -47,6 +47,7 @@
   width: auto;
   height: 7vh;
   display: block;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .cast-list {
@@ -54,6 +55,7 @@
   overflow-y: auto;
   width: 30vw;
   height: 63vh;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .cast-list ul {
