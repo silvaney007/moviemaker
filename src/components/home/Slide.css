@@ -31,8 +31,7 @@
 }
 
 .slide:hover ~ .slide {
-  position: relative;
-  left: 280px;
+  transform: translateX(280px);
   transition: 0.4s ease-out;
 }
 
