@@ -82,25 +82,23 @@ export default function Details(props) {
         <>
             <div className="detail">
                 <div className='detail-container'>
-                    <div className='detail-cast-img'>
-                        <div className='detail-cast'>
-                            <h1>Casting</h1>
-                            <div className='cast-list'>
-                                <ul>
-                                    {movie.cast.map(profile => (
-                                        <li key={profile.cast_id} id={profile.cast_id}>
-                                            {profile.profile_path ?
-                                                <img src={`https://image.tmdb.org/t/p/w500${profile.profile_path}`} alt='img'></img> :
-                                                <img src={auxImg} alt='img' background="none"></img>}
-                                            <div className="profile">
-                                                <p >{profile.name}<br></br> <span color="red"> as </span><br></br> {profile.character}</p>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                    <div className='detail-cast'>
+                        <h1>Casting</h1>
+                        <div className='cast-list'>
+                            <ul>
+                                {movie.cast.map(profile => (
+                                    <li key={profile.cast_id} id={profile.cast_id}>
+                                        {profile.profile_path ?
+                                            <img src={`https://image.tmdb.org/t/p/w500${profile.profile_path}`} alt='img'></img> :
+                                            <img src={auxImg} alt='img' background="none"></img>}
+                                        <div className="cast-name">
+                                            <p >{profile.name}<br></br> <span color="red"> as </span><br></br> {profile.character}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className='detail-img'>
+                        <div className='cast-img'>
                             {movie.details.poster_path ?
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.details.poster_path}`} alt='img'></img> :
                                 <img src={auxImg} alt='img' width="100%" height="100%" overflow="hidden" background="none"></img>}
@@ -115,22 +113,18 @@ export default function Details(props) {
                         </div>
                         <div className='detail-about'>
                             <div className="about-1">
-                                <div className="about-1-info">
-                                    <h1 className="title">{movie.details.title}</h1>
-                                    <p className="overview">{movie.details.overview}</p>
-                                </div>
+                                <h1 className="title">{movie.details.title}</h1>
+                                <p className="overview">{movie.details.overview}</p>
                             </div>
                             <div className="about-2">
-                                <div className="about-22">
-                                    <p className="classification"> <Classification className="icon1" /> <span> {movie.details.vote_average}/10 </span></p>
-                                    <p className="runtime"> <Runtime className="icon2" /> <span> {movie.details.runtime} </span></p>
-                                    <p className="genre"><Genre className="icon2" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
-                                    <p className="release"> <Release className="icon2" /> <span> {movie.details.release_date} </span></p>
-                                    <p className="country"> <Country className="icon2" /> <span> {movie.countries.map((cod, index) =>
-                                        <img key={index} src={`https://www.countryflags.io/${cod.iso_3166_1}/shiny/24.png`} alt={cod.iso_3166_1} ></img>)}</span> </p>
-                                    <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map((cod, index) =>
-                                        <img key={index} src={`https://unpkg.com/language-icons/icons/${cod.iso_639_1}.svg`} alt={cod.iso_639_1} width="23px" height="17px"></img>)}</span> </p>
-                                </div>
+                                <p className="classification"> <Classification className="icon1" /> <span> {movie.details.vote_average}/10 </span></p>
+                                <p className="runtime"> <Runtime className="icon2" /> <span> {movie.details.runtime} </span></p>
+                                <p className="genre"><Genre className="icon2" />  <span> {movie.genres.map(genre => `${genre.name} `)} </span></p>
+                                <p className="release"> <Release className="icon2" /> <span> {movie.details.release_date} </span></p>
+                                <p className="country"> <Country className="icon2" /> <span> {movie.countries.map((cod, index) =>
+                                    <img key={index} src={`https://www.countryflags.io/${cod.iso_3166_1}/shiny/24.png`} alt={cod.iso_3166_1} ></img>)}</span> </p>
+                                <p className="idiom"> <Idiom className="icon2" /> <span> {movie.idiom.map((cod, index) =>
+                                    <img key={index} src={`https://unpkg.com/language-icons/icons/${cod.iso_639_1}.svg`} alt={cod.iso_639_1} width="23px" height="17px"></img>)}</span> </p>
                             </div>
                         </div>
                     </div>

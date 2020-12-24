@@ -21,7 +21,7 @@
   background-image: url("../../img/skulls.png");
 }
 
-.detail-cast-img {
+.detail-cast{
   width: 30vw;
   height: 70vh;
   margin: 3rem;
@@ -30,37 +30,47 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
-  background-color: white;
   border-radius: 20px;
-  animation: fadeIn 3.5s ease-in;
+  animation: fadeIn 3s ease-in;
+  background-color: darkslategray;
 }
 
-.detail-cast {
-  border-radius: 20px;
-  width: 30vw;
-  height: 70vh;
+.detail-cast:hover{
+  background-color: white;
+}
+
+.detail-cast:hover h1{
+  display: flex;
+}
+
+.detail-cast:hover .cast-list{
+  display: flex;
+  animation: fadeIn 3s ease;
+}
+
+.detail-cast:hover .cast-img{
+  display: none;
 }
 
 .detail-cast h1 {
   background-color: darkslategray;
   color: lightgoldenrodyellow;
-  width: auto;
   height: 7vh;
   width: 100%;
-  display: block;
-  border-radius: 10px 10px 0px 0px;
-  display: flex;
-  flex-direction: column;
+  border-radius: 20px 20px 0px 0px;
   align-items: center;
   justify-content: center;
+  display: none;
 }
 
 .cast-list {
   background-color: white;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 30vw;
   height: 63vh;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 20px;
+  display: none;
 }
 
 .cast-list ul {
@@ -71,9 +81,9 @@
 }
 
 .cast-list li {
-  width: 100%;
-  height: 90%;
-  border-radius: 10px 10px 10px 10px;
+  width: 12vw;
+  height: 30vh;
+  border-radius: 10px;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -85,13 +95,13 @@
 
 .cast-list img {
   width: 100%;
-  height: 70%;
+  height: 75%;
   border-radius: 10px 10px 0px 0px;
 }
 
-.profile {
-  width: 100%;
-  height: 30%;
+.cast-name {
+  width: 15vw;
+  height: 25%;
   color: black;
   font-size: 18px;
   font-family: "Lobster", cursive;
@@ -101,7 +111,7 @@
   align-items: center;
 }
 
-.profile p {
+.cast-name p {
   padding: 2rem;
   text-align: center;
 }
@@ -116,14 +126,14 @@
   color: lightgoldenrodyellow;
 }
 
-.detail-img {
+.cast-img {
   width: 90%;
   height: 95%;
   padding: 1rem;
-  display: none;
+  animation: fadeIn 5s ease;
 }
 
-.detail-img img {
+.cast-img img {
   width: 100%;
   height: 100%;
   border-radius: 20px;
@@ -169,66 +179,46 @@
 }
 
 .about-1 {
-  width: 70%;
-  height: 100%;
+  width: 30vw;
   font-weight: bold;
   text-align: center;
   display: flex;
   flex-direction: column;
   border-radius: 0px 0px 0px 20px;
-}
-
-.about-1-info {
   overflow-y: auto;
-  overflow-x: visible;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0px 0px 0px 20px;
+  text-align: center;
 }
 
-.about-1-info h1 {
+.about-1 h1 {
   font-size: 24px;
   color: brown;
   font-family: "Lobster", cursive;
   padding: 1rem;
 }
-.about-1-info p {
+.about-1 p {
   padding: 1rem;
 }
 
 .about-2 {
-  width: 30%;
-  height: 100%;
+  width: 15vw;
   font-weight: bold;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  border-radius: 0px 0px 20px 0px;
-}
-
-.about-22 {
-  overflow: auto;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   border-radius: 0px 0px 20px 0px;
+  overflow-x: auto;
 }
 
-.about-22 p {
+.about-2 p {
   margin: 0.2rem;
   display: inline-flex;
   font-size: 16px;
 }
 
-.about-22 p span {
+.about-2 p span {
   padding-left: 0.3rem;
+  padding-top: 0.3rem;
 }
 
 .icon1 {
@@ -251,6 +241,15 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
