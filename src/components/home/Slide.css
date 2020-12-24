@@ -1,22 +1,23 @@
 .slide-show {
   height: 85vh;
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .slides-list {
   position: relative;
-  width: 2000px;
-  top: 32px;
-  left: calc(50% - 1000px);
+  width: 1850px;
+  top: 25px;
+  left: calc(50% - 925px);
   display: flex;
 }
 
 .slide {
-  position: relative;
   display: flex;
   width: 250px;
   transition: 0.4s ease-out;
   left: 0px;
+  padding-bottom: 1rem;
+
 }
 
 .slide:not(:first-child) {
