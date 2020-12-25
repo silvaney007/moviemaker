@@ -244,5 +244,24 @@
   }
 }
 
+
+@media only screen and (max-width: 1165px) {
+
+}
+
 @media only screen and (max-width: 840px) {
+  .detail-container{
+    flex-direction: column;
+  }
+
+  .cast-list ul {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
 }

@@ -1,5 +1,6 @@
 .slide-show {
   height: 85vh;
+  width: 100vw;
   overflow-x: auto;
 }
 
