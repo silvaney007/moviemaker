@@ -92,7 +92,7 @@ export default function Details(props) {
                                             <img src={`https://image.tmdb.org/t/p/w500${profile.profile_path}`} alt='img'></img> :
                                             <img src={auxImg} alt='img' background="none"></img>}
                                         <div className="cast-name">
-                                            <p >{profile.name}<br></br> <span color="red"> as </span><br></br> {profile.character}</p>
+                                            <p >{profile.name}<br></br> <span color="red"> as {profile.character} </span></p>
                                         </div>
                                     </li>
                                 ))}
