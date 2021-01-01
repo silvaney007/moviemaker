@@ -148,8 +148,6 @@ export default function Home() {
 
     var slides =  document.querySelector(".slides-list");
 
-    console.log(slides)
-
     /* const aux = slides[0];
     slides[0] = slides[slides.length]
     slides[slides.length] = aux; */
