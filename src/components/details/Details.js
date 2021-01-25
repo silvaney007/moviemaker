@@ -47,7 +47,6 @@ export default function Details(props) {
                 err = true;
             })
 
-            console.log(data)
             const trailer = await getTrailer(data);
 
             if (err) {

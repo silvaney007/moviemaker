@@ -103,7 +103,6 @@ export default function Home() {
 
     const newCategory = event.target.id;
 
-    window.scrollTo(0, 807);
     document.getElementById(category).style.backgroundColor = "#2e3131";
     document.getElementById(category).style.color = "white";
     document.getElementById(newCategory).style.backgroundColor = "white";
@@ -142,42 +141,34 @@ export default function Home() {
   }
 
 
-  useEffect(() => {
-
-  function showSlides() {
-
-    var slides =  document.querySelector(".slides-list");
-
-    /* const aux = slides[0];
-    slides[0] = slides[slides.length]
-    slides[slides.length] = aux; */
-
-    //setTimeout(showSlides, 2000); // Change image every 2 seconds
-   }
-
-   showSlides();
-
-},[]);
-
   return (
     <div className="app">
       <div className="home">
-        <div className="slide-show">
-          <ul className="slides-list">
+        <div className="slideshow">
+          <div className="container">
             {slideMovies.map(movie => (
-              <li className="slide" key={movie.id}>
+              <div className="slide" key={movie.id}>
                 <a onClick={() => details(movie)}>
                   {movie.backdrop_path ?
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='img'></img> :
                     <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
                 </a>
-              </li>
+              </div>
             ))}
-          </ul>
+            {slideMovies.map(movie => (
+              <div className="slide" key={movie.id}>
+                <a onClick={() => details(movie)}>
+                  {movie.backdrop_path ?
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='img'></img> :
+                    <img src={auxImg} alt='img' width="101px" height="155px" overflow="hidden" background="none"></img>}
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="nav-bar">
-          <div className="button-container">
+          <div className="category-container">
             <button id="popular" onClick={handleCategory}> Popular </button>
             <button id="top_rated" onClick={handleCategory}> Top Rated </button>
             <button id="now_playing" onClick={handleCategory}> Now Playing </button>
