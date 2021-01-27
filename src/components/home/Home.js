@@ -205,7 +205,7 @@ export default function Home() {
         </div>
 
         <div className="top">
-          <a onClick={() => window.scrollTo(0, 807)}>
+          <a onClick={() => window.scrollTo(0, 0)}>
             <ExpandLessIcon id="up" />
           </a>
         </div>

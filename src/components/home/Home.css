@@ -10,7 +10,6 @@
   align-items: center;
 }
 
-
 .nav-bar {
   width: 100vw;
   height: 15vh;
@@ -24,7 +23,7 @@
 .category-container {
   background-color: white;
   width: 60vw;
-  height:10vh ;
+  height: 10vh;
   display: flex;
   justify-content: space-evenly;
   border-radius: 20px 20px 0px 0px;
@@ -63,7 +62,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 5px 10px -2px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.15);
 }
 
 .search {
@@ -190,6 +189,9 @@
   border: 5px solid darkslategray;
   border-radius: 15px;
   opacity: 0.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .top a:hover {
@@ -202,10 +204,6 @@
   width: 3rem;
   height: 2rem;
   color: darkslategray;
-}
-
-#up:hover {
-  animation: rotate365 1.3s;
 }
 
 @keyframes fadeIn {
@@ -236,27 +234,23 @@
 }
 
 @media only screen and (max-width: 1200px) {
-
   .movie-list ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media only screen and (max-width: 900px) {
-
   .movie-list ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .category-container button{
+  .category-container button {
     font-size: 15px;
-    }
-
+  }
 }
 
 @media only screen and (max-width: 600px) {
-
   .nav-bar {
-    position:absolute;
+    position: absolute;
     transform: rotate(-90deg);
     right: 250px;
     top: 110vh;
@@ -266,7 +260,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
 
-  .category-container button{
+  .category-container button {
     font-size: 12px;
-    }
+  }
 }

@@ -19,6 +19,7 @@
   border-radius: 20px;
   background-color: azure;
   background-image: url("../../img/skulls.png");
+  overflow: auto;
 }
 
 .detail-cast{
