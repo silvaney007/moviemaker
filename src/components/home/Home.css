@@ -162,7 +162,7 @@
 
 .pages button {
   padding: 18px;
-  width: 15rem;
+  width: 240px;
   border-radius: 25px;
   border: 0;
   background-color: #2e3131;
@@ -238,6 +238,11 @@
   .movie-list ul {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .pages button {
+    width: 200px;
+  }
+
 }
 
 
@@ -252,6 +257,10 @@
   }
   .category-container button {
     font-size: 12px;
+  }
+
+  .pages button {
+    width: 160px;
   }
 }
 
@@ -271,6 +280,10 @@
 
   .movie-list ul {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .pages button {
+    width: 120px;
   }
 
   .top {
