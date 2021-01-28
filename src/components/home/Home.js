@@ -171,8 +171,8 @@ export default function Home() {
           <div className="category-container">
             <button id="popular" onClick={handleCategory}> Popular </button>
             <button id="top_rated" onClick={handleCategory}> Top Rated </button>
-            <button id="now_playing" onClick={handleCategory}> Now Playing </button>
-            <button id="upcoming" onClick={handleCategory}> Upcoming </button>
+{/*             <button id="now_playing" onClick={handleCategory}> Now Playing </button>
+ */}            <button id="upcoming" onClick={handleCategory}> Upcoming </button>
           </div>
         </div>
 
