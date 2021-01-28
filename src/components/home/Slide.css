@@ -76,3 +76,22 @@
     transform: translateX(calc(-150px * 20));
   }
 }
+
+
+@media only screen and (max-width: 1200px) {
+
+}
+@media only screen and (max-width: 900px) {
+  .slideshow::before,
+  .slideshow::after {
+    width: 60px;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .slideshow::before,
+  .slideshow::after {
+    width: 30px;
+  }
+}

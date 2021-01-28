@@ -207,7 +207,7 @@
   align-items: flex-start;
   justify-content: center;
   border-radius: 0px 0px 20px 0px;
-  overflow-x: auto;
+  overflow: auto;
 }
 
 .about-2 p {

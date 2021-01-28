@@ -36,7 +36,7 @@
   border: none;
   color: white;
   background-color: #2e3131;
-  font-size: 18px;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -88,7 +88,7 @@
 
 .search form ::placeholder {
   color: whitesmoke;
-  font-size: small;
+  font-size: 10px;
   text-justify: center;
   text-align: center;
   opacity: 0.5;
@@ -182,10 +182,10 @@
 
 .top a {
   position: fixed;
-  top: 95%;
-  right: 4rem;
-  width: 3rem;
-  height: 2rem;
+  top: 93%;
+  right: 2%;
+  width: 40px;
+  height: 40px;
   border: 5px solid darkslategray;
   border-radius: 15px;
   opacity: 0.2;
@@ -234,33 +234,34 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .movie-list ul {
+
+   .movie-list ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media only screen and (max-width: 900px) {
+
+  .search form ::placeholder {
+    font-size: 8px;
+  }
+
   .movie-list ul {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .category-container button {
-    font-size: 15px;
+    font-size: 12px;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
-  .nav-bar {
-    position: absolute;
-    transform: rotate(-90deg);
-    right: 250px;
-    top: 110vh;
-  }
 
-  .movie-list ul {
+ .movie-list ul {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .category-container button {
-    font-size: 12px;
+    font-size: 8px;
   }
+
 }
