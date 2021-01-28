@@ -13,11 +13,12 @@
 }
 
 .close{
+  margin: 0.2rem;
   width: 95vw;
-  height: 3rem;
+  height: 5vh;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #close {
@@ -43,4 +44,19 @@
   to {
     transform: rotate(365deg);
   }
+}
+
+@media only screen and (max-width: 1200px) {
+
+
+}
+
+
+@media only screen and (max-width: 900px) {
+
+  
+}
+
+@media only screen and (max-width: 600px) {
+ 
 }

@@ -1,16 +1,7 @@
-.detail {
-  width: 95vw;
-  height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: all ease-in-out;
-}
-
 .detail-container {
   width: 90vw;
-  height: 80vh;
-  margin: 1.5rem;
+  height: 90vh;
+  margin: 0.2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,10 +11,11 @@
   background-color: azure;
   background-image: url("../../img/skulls.png");
   overflow: auto;
+  animation: all ease-in-out;
 }
 
-.detail-cast{
-  width: 30vw;
+.detail-cast {
+  width: 35vw;
   height: 70vh;
   margin: 3rem;
   display: flex;
@@ -36,20 +28,20 @@
   background-color: darkslategray;
 }
 
-.detail-cast:hover{
+.detail-cast:hover {
   background-color: white;
 }
 
-.detail-cast:hover h1{
+.detail-cast:hover h1 {
   display: flex;
 }
 
-.detail-cast:hover .cast-list{
+.detail-cast:hover .cast-list {
   display: flex;
   animation: fadeIn 3s ease;
 }
 
-.detail-cast:hover .cast-img{
+.detail-cast:hover .cast-img {
   display: none;
 }
 
@@ -72,6 +64,7 @@
   height: 63vh;
   border-radius: 20px;
   display: none;
+  justify-content: center;
 }
 
 .cast-list ul {
@@ -195,6 +188,7 @@
   font-family: "Lobster", cursive;
   padding: 2rem;
 }
+
 .about-1 p {
   padding: 1rem;
 }
@@ -205,9 +199,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   border-radius: 0px 0px 20px 0px;
-  overflow: auto;
+  overflow-y: auto;
+  padding-top: 0.2rem;
 }
 
 .about-2 p {
@@ -244,24 +238,78 @@
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .detail-cast {
+    width: 60vw;
+    height: auto;
+  }
 
-@media only screen and (max-width: 1165px) {
+  .detail-cast h1 {
+    height: 10vh;
+  }
+
+  .cast-list {
+    width: 50vw;
+    height: 70vh;
+  }
+
+  .cast-list li {
+    width: 20vw;
+    height: 40vh;
+  }
+
+  .detail-info {
+    width: 60vw;
+    height: 80vh;
+  }
+
+  .detail-video {
+    width: 60vw;
+    height: 55vh;
+  }
+
+  .detail-about {
+    width: 60vw;
+    height: 25vh;
+  }
+
+  .about-1 {
+    width: 40vw;
+  }
+
+  .about-2 {
+    width: 20vw;
+  }
+
+  .detail-container {
+    flex-direction: column;
+    justify-content: initial;
+  }
+}
+
+@media only screen and (max-width: 900px) {
 
 }
 
-@media only screen and (max-width: 840px) {
-  .detail-container{
-    flex-direction: column;
-  }
-
+@media only screen and (max-width: 600px) {
   .cast-list ul {
     padding: 1rem;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
   }
-}
 
-@media only screen and (max-width: 600px) {
+  .detail-about {
+    flex-direction: column;
+  }
 
+  .about-1 {
+    width: 100%;
+    align-items: initial;
+  }
+
+    .about-2 {
+      width: 100%;
+align-items: initial;
+    }
 }

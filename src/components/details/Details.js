@@ -79,7 +79,6 @@ export default function Details(props) {
 
     return (
         <>
-            <div className="detail">
                 <div className='detail-container'>
                     <div className='detail-cast'>
                         <h1>Casting</h1>
@@ -128,7 +127,6 @@ export default function Details(props) {
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     )
 }
