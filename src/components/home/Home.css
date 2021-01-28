@@ -235,10 +235,12 @@
 
 @media only screen and (max-width: 1200px) {
 
-   .movie-list ul {
+  .movie-list ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+
 @media only screen and (max-width: 900px) {
 
   .search form ::placeholder {
@@ -251,17 +253,27 @@
   .category-container button {
     font-size: 12px;
   }
-
 }
 
 @media only screen and (max-width: 600px) {
-
- .movie-list ul {
-    grid-template-columns: repeat(1, 1fr);
+  .category-container {
+    background-color: white;
+    width: 75vw;
   }
 
   .category-container button {
     font-size: 8px;
   }
 
+  .movie-container {
+    width: 90vw;
+  }
+
+  .movie-list ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .top {
+    display: none;
+  }
 }
