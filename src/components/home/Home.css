@@ -67,17 +67,19 @@
 
 .search {
   width: 30vw;
+  height: 15vh;
   margin: 0 auto;
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: bisque;
 }
 
 .search input {
   width: 25vw;
-  height: 5vh;
+  height: 6vh;
   border-radius: 2px;
   background-color: #2e3131;
   color: white;
@@ -265,6 +267,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+
+  .search input {
+    width: 30vw;
+  }
   .category-container {
     background-color: white;
     width: 75vw;
