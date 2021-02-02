@@ -15,7 +15,7 @@
 }
 
 .detail-cast {
-  width: 35vw;
+  width: 30vw;
   height: 70vh;
   margin: 3rem;
   display: flex;
@@ -288,7 +288,6 @@
 }
 
 @media only screen and (max-width: 900px) {
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -308,8 +307,8 @@
     align-items: initial;
   }
 
-    .about-2 {
-      width: 100%;
-align-items: initial;
-    }
+  .about-2 {
+    width: 100%;
+    align-items: initial;
+  }
 }
